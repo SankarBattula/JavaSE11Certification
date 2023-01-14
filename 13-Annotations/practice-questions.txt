@@ -1,0 +1,74 @@
+1. What modifier is used to mark an annotation element as optional?
+    A. optional
+    B. default
+    C. required
+    D. value
+    E. case
+    F. None of the above
+
+    Explanation :
+    B. The default modifier along with a value is used to mark an annotation element as optional, as opposed to required.
+
+2. Given a Broadway show, which information is best stored using annotations? (Choose two.)
+    A. The number of people attending each day
+    B. The maximum number of tickets a person can purchase
+    C. The total number of people the theater can hold
+    D. The price including discounts a person pays for a ticket
+    E. A person’s seat assignment
+    F. The time a ticket is sold
+
+    Explanation :
+    B,C. Annotations are about storing metadata, or data about data. The maximum number of tickets per person and total number of people the theater can hold define rules that are unlikely to change frequently, so they are best stored with annotations. The number of people attending,price, and time the ticket is sold are likely to change frequently and should be part of the transactional information for the ticket. The seat assignment also changes for every ticket sold.
+
+3. Fill in the blank with the correct annotation usage that allows the code to compile.
+    public interface CelestialBody {
+        String name();
+        double size() default 100;
+        int lightYears = 2;
+    }
+    _________________ class Planet {}
+
+    A. @CelestialBody(name="Venus")
+    B. @CelestialBody(name="Pluto", size=2, lightYears=5)
+    C. @CelestialBody(lightYears=10)
+    D. @CelestialBody("Jupiter")
+    E. @CelestialBody(size=3)
+    F. None of the above
+
+    Explanation :
+    F. CelestialBody is not an annotation definition because it is not declared with the @interface type, making option F correct. If the correct declaration was used, then option A would be the correct answer. Options B and C are incorrect, because lightYears is a constant and cannot be set as part of the annotation. Options C and E are also incorrect because they are missing a name element. Option D is incorrect because there is no value() element.
+
+4. Fill in the blank with the correct value for @Target that allows the code to compile.
+    import java.lang.annotation.*;
+
+    @Target({____________________})
+    public @interface LightSource {}
+
+    @LightSource class Bulb {
+        @LightSource void lightSwitch() {}
+        @LightSource private Bulb() {}
+    }
+
+    A. ElementType.METHOD, ElementType.CONSTRUCTOR
+    B. ElementType.ANNOTATION_TYPE
+    C. ElementType.CONSTRUCTOR, ElementType.TYPE, ElementType.METHOD
+    D. ElementType.TYPE_USE
+    E. ElementType.LOCAL_VARIABLE, ElementType.FIELD
+    F. None of the above
+
+    Explanation :
+    C. Option C uses the correct values and allows all three annotations to compile. Option A is 
+    incorrect because the class declaration usage does not compile. Using option B or E does not 
+    allow any of the annotations to compile. Option D allows the class and constructor annotations to compile, but not the method usage
+
+5. Which of the following are marker annotations? (Choose three.)
+
+    A. @Target
+    B. @Inherited
+    C. @Override
+    D. @Retention
+    E. @Repeatable
+    F. @Documented
+
+    Explanation :
+    B,C,F. Options B, C, and F are each marker annotations because they do not contain any elements. Option A is incorrect because @Target requires an ElementType[] value. Option D is incorrect because @Retention requires a RetentionPolicy value. Option E is incorrect because @Repeatable requires a Class value.
