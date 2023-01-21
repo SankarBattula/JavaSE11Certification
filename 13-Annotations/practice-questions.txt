@@ -71,4 +71,493 @@
     F. @Documented
 
     Explanation :
-    B,C,F. Options B, C, and F are each marker annotations because they do not contain any elements. Option A is incorrect because @Target requires an ElementType[] value. Option D is incorrect because @Retention requires a RetentionPolicy value. Option E is incorrect because @Repeatable requires a Class value.
+    B,C,F. Options B, C, and F are each marker annotations because they do not contain any elements. 
+    Option A is incorrect because @Target requires an ElementType[] value. 
+    Option D is incorrect because @Retention requires a RetentionPolicy value. 
+    Option E is incorrect because @Repeatable requires a Class value.
+
+6. Given the following declarations, which annotations can fill in the blank that would allow the code to compile? (Choose three.)
+    public @interface Music {
+        String value() default "violin";
+    }
+    class Orchestra {
+        ______________ void play() {}
+    }
+
+    A. @Music(super="piccolo")
+    B. @Music("viola")
+    C. @Music(value()="bass")
+    D. @Music
+    E. @Music(default="flute")
+    F. @Music(value="cello")
+
+    Explanation :
+    B,D,F. Option B is correct and relies on the fact that the single element value() can be 
+    used without an element name. 
+    Option D is correct because the annotation has a default value; therefore, value is optional. 
+    Option F is correct and uses the correct name for value. 
+    Options A, C, and E are incorrect because they use the wrong name for the element.
+
+7. How many lines of the following declaration contain a compiler error?
+    1: public @interface Thermometer {
+    2:      int minTemp();
+    3:      Integer maxTemp() default 1;
+    4:      double[] color();
+    5:      final String type;
+    6:      Boolean compact;
+    7: }
+
+    A. None
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation :
+    D. Lines 3 and 6 do not compile because wrapper classes are not permitted as annotation element types. 
+    Line 5 does not compile because a constant must be declared with a value. 
+    For these reasons, option D is correct. The rest of the lines compile without issue.
+
+8. In what ways are annotations similar to interfaces? (Choose two.)
+    A. They can both declare methods with bodies.
+    B. They can both declare constructors.
+    C. They can both declare constants.
+    D. They can both be extended with the extends keyword.
+    E. They can both be used in a class declaration.
+    F. They both are declared with the interface type.
+
+    Explanation :
+    C,E. Annotations and interfaces can both declare constants and be applied to a class declaration, making options C and E correct. 
+    Options A and D are incorrect. An interface can define a method and be extended, but an annotation cannot. 
+    Neither type can declare constructors, making option B incorrect. 
+    Interfaces use the interface type, while annotations use the @interface type, making option F incorrect
+
+9. In how many of the marked places (m1, m2, m3) will adding the line
+    @SuppressWarnings() independently allow the class to compile without any warnings?
+    import java.util.*;
+    // m1
+    public class Space {
+        // m2
+        final void frontier() {
+            List<Object> stars = List.of(1,2,3);
+            stars.add(4);
+            // m3
+            List planets = new ArrayList<>();
+            planets.add(5);
+        }
+    }
+
+    A. None, the class does not compile as is.
+    B. None, the class already compiles without warnings.
+    C. One.
+    D. Two.
+    E. Three.
+    F. None of the above.
+
+    Explanation :
+    F. The class compiles as is but generates warnings for unchecked/unsafe operations with the planets.add(5) operation, so options A and B are incorrect. 
+    Inserting @SuppressWarnings(), though, will cause a compiler error as it requires at least one value. For this reason, option F is correct. 
+    If @SuppressWarnings("unchecked") was used instead, then inserting it on lines m1 and m2 would allow the code to compile without any warnings.
+
+10. An annotation cannot be applied to which of the following?
+    A. Class declaration.
+    B. Annotation declaration.
+    C. Inner class declaration.
+    D. Cast operation.
+    E. Local variable declaration using var.
+    F. An annotation can be applied to all of the above.
+
+    Explanation :
+    F. An annotation can be applied to all of these Java declarations, making option F correct
+
+11. Which statements about the @Override annotation are correct? (Choose three.)
+    A. It can be optionally specified when a class implements an abstract interface method.
+    B. Adding it to a method may trigger a compiler error.
+    C. It is required whenever a class implements an abstract interface method.
+    D. It can be added to an interface declaration type.
+    E. It can be optionally specified when a method is overridden in a subclass.
+    F. It is required whenever a method is overridden in a subclass.
+
+    Explanation :
+    A,B,E. The @Override annotation is always optional for methods and never required. For this reason, options A and E are correct, 
+    and options C and F are incorrect. 
+    Option B is correct because adding it to a method that is not actually overriding an inherited method will cause a compiler error. 
+    Option D is incorrect because it can be applied only to method declarations.
+
+12. Given the following declarations, which annotation can be applied to a method declaration?
+    import java.lang.annotation.*;
+    @interface Bread {
+        public int maker = 5;
+        String baker();
+    }
+    @Inherited
+    @interface Toast {
+        boolean buttered() default true;
+        int freshness() default Bread.maker;
+        static boolean wheat = false;
+    }
+    A. @Toast(true)
+    B. @Toast
+    C. @Bread("null")
+    D. @Toast(wheat=true)
+    E. @Bread
+    F. None of the above, as the annotation declarations do not compile
+
+    Explanation :
+    B. The declaration compiles, so option F is incorrect. 
+    The Bread annotation is declared with one required element, while Toast is declared with no required elements. For these reasons, option B is correct, and option E is incorrect. 
+    Options A and C are incorrect because neither annotation contains a value() element. 
+    Option D is incorrect because wheat is a constant, not an element.
+
+13. Which properties of the Clean annotation must be true for the following to compile? (Choose three.)
+    @Clean("Basement") public class House {}
+    A. The annotation must contain exactly one element.
+    B. The annotation must contain an element named value.
+    C. The element must not have a default value.
+    D. The element may have a default value.
+    E. The annotation may contain more than one element.
+    F. The annotation must contain an element named values.
+
+    Explanation :
+    B,D,E. An annotation may omit the element name if it contains an element named value, declared as value(), making option B correct and option F incorrect. 
+    Additionally, it may contain any number of additional elements, provided none of them is required, making option E correct. 
+    Finally, the element may optionally have a default value, making option D correct. 
+    The other options are incorrect statements that contradict the correct answers.
+
+14. Assume the following code compiles. Which annotation inserted in the line allows the code to
+    print a non-null value at runtime?
+    // INSERT HERE
+    @interface Fast {
+        int topSpeed() default 10;
+    }
+    @Fast class BigCat {}
+    public class Cheetah extends BigCat {
+        public static void main(String... unused) {
+            var a = Cheetah.class.getAnnotation(Fast.class);
+            System.out.print(a);
+        }
+    }
+    A. @Inherited
+    B. @Polymorphism
+    C. @Inheritance
+    D. @Retention
+    E. @Subclass
+    F. None of the above
+
+    Explanation :
+    F. Trick question! By default, annotations are not present at runtime. 
+    To print a non-null value, both @Retention(RetentionPolicy.RUNTIME) and @Inherited would be required, making option F correct. 
+    The @Retention annotation would preserve the annotation for runtime, while the @Inherited annotation would apply it to the subclass Cheetah.
+
+15. How many lines of the following declaration contain a compiler error?
+    1: public @interface Student {
+    2:      final boolean likesPonies = true;
+    3:      int value default 100;
+    4:      int age();
+    5:      /** TODO **/
+    6:      String name() default "Olivia";
+    7: }
+
+    A. None
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation :
+    B. Only line 3 contains a compiler error, as an element declared in an annotation must use parentheses after its name, making option B correct. 
+    If value() was used instead of value, then the code would compile
+
+16. Which statement about the following declarations is correct?
+    import java.lang.annotation.*;
+    import java.util.List;
+
+    @Target(ElementType.TYPE_USE)
+    public @interface Friend {
+        String value();
+        String lastName() default null;
+        int age = 10;
+    }
+    class MyFriends {
+        void makeFriends() {
+            var friends = List.of(new @Friend("Olivia") Object(),
+                new @Friend("Adeline") String(),
+                new @Friend("Henry") MyFriends());
+        }
+    }
+
+    A. None of the declarations compile.
+    B. Only the declaration of Friend contains a compiler error.
+    C. Only the declaration of MyFriends contains a compiler error.
+    D. Both declarations contain compiler errors.
+    E. None of the above.
+
+    Explanation :
+    B. A default annotation element value must be a non-null constant expression. Since lastName() provides a null value by default, the declaration of Friend contains a compiler error. 
+    The declaration of MyFriends does not contain any compiler errors, so option B is correct.
+
+17. Which of the following are permitted to be used for annotation element type? (Choose three.)
+    A. Object
+    B. An annotation
+    C. Class[]
+    D. An enum
+    E. Double
+    F. var
+
+    Explanation :
+    B,C,D. An annotation element type must be a primitive type, a String, a Class, an enum, another annotation, or an array of any of these types. For this reason, options B, C, and D are correct. 
+    Option A is incorrect because Object is not supported. 
+    While primitives are supported, wrappers are not, making option E incorrect. 
+    Option F is also incorrect as local variable type inference with var is not permitted, even if a default value is provided.
+
+18. Fill in the blanks with the lines of code that allow the program to compile. (Choose two.)
+    import java.lang.annotation.*;
+    @Repeatable(___________) // t1
+    @interface Gift {
+        String value();
+    }
+    @interface Presents {
+        ___________; // t2
+    }
+    @Gift("Book") @Gift("Toy") public class Surprise {}
+
+    A. Presents on line t1
+    B. @Presents on line t1
+    C. Gift value() on line t2
+    D. Presents.class on line t1
+    E. Gift[] value() on line t2
+    F. Gift[] gift() on line t2
+
+    Explanation :
+    D,E. Gift is a repeatable annotation. It requires specifying a container type annotation using the Class object, making option D correct. 
+    The containing type annotation referenced must declare a value() element that is an array of the repeatable annotation, making option E correct.
+
+19. Which statements about annotations are correct? (Choose three.)
+    A. Annotations contain data that changes throughout the program execution.
+    B. Adding an annotation to a class that already compiles may trigger a compiler error and cause it to fail to compile.
+    C. Annotations contain metadata about a Java type.
+    D. Annotations cannot be applied to lambda expression variables.
+    E. Annotations cannot be applied to other annotations.
+    F. Removing all annotations from a class that already compiles will not introduce a compiler error.
+
+    Explanation :
+    B,C,F. Option A is incorrect, as annotations generally contain information that is constant throughout the program execution. 
+    Option B is correct. For example, adding an @Override annotation to a method that is not a valid override will trigger a compiler error. 
+    Option C is also correct and is the primary purpose of annotations. 
+    Options D and E are incorrect, as annotations can be applied to a variety of types including lambda expression variables and other annotations. 
+    Finally, option F is correct. Annotations are optional metadata, and removing all of them from a class does not cause a compiler error
+
+20. Given the following declarations, which annotations can fill in the blank that would allow
+    the code to compile? (Choose three.)
+    import java.util.*;
+    public @interface Vacuum {
+    String[] value();
+    }
+    class Appliance {
+    ______________ void clean() {}
+    }
+    A. @Vacuum({})
+    B. @Vacuum({"upright","new"})
+    C. @Vacuum(List.of("portable"))
+    D. @Vacuum
+    E. @Vacuum("handheld")
+    F. @Vacuum(default="shop")
+
+    Explanation :
+    A,B,E. Options A, B, and E are correct and rely on the fact that the element name is optional for an annotation with a single element named value(). 
+    Option E also relies on annotations supporting a single element for an array. Note that the array provided is not required to have any elements. 
+    Option C is incorrect because Java does not automatically convert from a List to an array. 
+    Option D is incorrect because the annotation contains a required element. 
+    Finally, option F is incorrect because default is the wrong element name
+    
+21. Which method declarations can @SafeVarargs be correctly applied to? (Choose two.)
+    A. protected void hum(double... tune)
+    B. final int whistle(int length, float... measure) 
+    C. static void sing()
+    D. private void listen(String... mp3)
+    E. void dance(List<Integer>... beat)
+    F. private static int play(int[] notes)
+
+    Explanation :
+    B,D. The @SafeVarargs annotation requires the method to which it is applied contain a varargs parameter and be unable to be overridden, aka marked static, final, or private. Options B and D fulfill this requirement. 
+    Options A and E are missing a modifier that prevents them from being overridden. 
+    Options C and F are missing a vararg parameter. While a primitive array int[] can be passed to a method containing a varargs parameter, to apply the @SafeVarargs annotation, the method must be declared with a varargs annotation.
+
+22. Which annotation can be applied to an existing annotation X and ensures a class that uses X shows the annotation in its generated Javadoc?
+    A. @Documented
+    B. @Generated
+    C. @JavaDoc
+    D. @PreserveAnnotations
+    E. @Retention
+    F. None of the above
+
+    Explanation :
+    A. The correct annotation that preserves information about annotations in generated Javadoc files is @Documented. The rest are incorrect
+
+23. Fill in the blank with the value that allows the annotation to be accessible by the JVM in which it is executed?
+    import java.lang.annotation.*;
+    @Retention(__________________)
+    public class Corn {}
+    A. RetentionPolicy.CLASS
+    B. RetentionPolicy.JRE
+    C. RetentionPolicy.RUNTIME
+    D. RetentionPolicy.SOURCE
+    E. RetentionPolicy.LIVE
+    F. None of the above
+
+    Explanation :
+    F. The @Retention annotation can be applied only to an annotation declaration, not a class declaration, making option F the correct answer. 
+    Applying it to a class will result in a compiler error. If Corn were an annotation, though, then RetentionPolicy.RUNTIME would be correct
+
+24. How many lines of the following declarations contain a compiler error?
+    1: @interface Sword {}
+    2: public @interface Zelda {
+    3:      private String game();
+    4:      Sword sword();
+    5:      java.util.List<Integer> gems;
+    6:      final boolean hasBossKey();
+    7:      public abstract int level() default 99;
+    8:      protected boolean continue();
+    9: }
+    A. None
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation :
+    E. Lines 3 and 8 do not compile because annotation elements must be public, implicitly or explicitly. 
+    Line 8 also does not compile because continue is a keyword in Java. 
+    Line 5 does not compile. While arrays are permitted as element types, collections like List are not. 
+    Line 6 does not compile because annotation elements cannot be marked final, as they are implicitly abstract. For these reasons, option E is correct. 
+    Line 4 compiles because an annotation can declare another annotation as the element type. 
+    Line 7 also compiles. While the public and abstract modifiers aren’t required for an annotation element, they can be specified.
+
+25. Which of the following are permitted for an annotation element default value? (Choose three.)
+    A. ""
+    B. (int)1_000.0
+    C. new String()
+    D. Integer.valueOf(3).intValue()
+    E. null
+    F. Integer.MAX_VALUE
+
+    Explanation :
+     A,B,F. An annotation element can include a default value if it is a non-null constant expression. Options A, B, and F fulfill this criteria. 
+     Option C is incorrect because it creates a new object. 
+     Option D is incorrect because it uses method calls. 
+     Option E is incorrect because null is not permitted.
+
+26. Assuming @Weather is a valid repeatable annotation that takes a String, with its associated containing type annotation @Forecast, which of the following can be applied to a type declaration? (Choose two.)
+    A. @Forecast({"Storm", "Cloudy"})
+    B. @Forecast({@Weather("Storm"), @Weather("Cloudy")})
+    C. @Weather("Storm") @Weather("Cloudy")
+    D. @Weather({@Forecast("Storm"), @Forecast("Cloudy")})
+    E. @Forecast("Storm") @Forecast("Cloudy")
+    F. @Weather({"Storm", "Cloudy"})
+
+    Explanation :
+    B,C. @Weather is the repeatable annotation, so it can be used twice on the same type declaration, making option C correct. 
+    A containing type annotation @Forecast takes an array of the repeatable annotation @Weather, making option B also correct. 
+    Options A and F are incorrect, as those represent an annotation that takes an array of String values. 
+    Option D and E are incorrect because the repeatable and containing type annotations are reversed.
+
+27. Which of the following interface declarations will still compile if @FunctionalInterface is applied to each? (Choose two.)
+    interface Dog {
+        default void drink() {}
+        void play();
+    }
+    interface Astra extends Dog {
+        private static int eat() { return 1; }
+        void fetch();
+    }
+    interface Webby extends Dog {
+        abstract void play();
+        default void rest() {}
+        abstract String toString();
+    }
+    interface KC {}
+    interface Georgette extends Dog {
+        int intelligence = 5;
+        void jump();
+    }
+
+    A. Dog
+    B. KC
+    C. Georgette
+    D. Webby
+    E. Astra
+
+    Explanation :
+    A,D. To correctly apply the @FunctionalInterface annotation, the interface must pass the single abstract method test. 
+    Also, note that none of the default or static methods contributes to the abstract method count.
+    Dog contains a single abstract method play(), so it will compile, making option A correct. 
+    Webby extends Dog with the same abstract method as Dog. It also declares toString(), but since this is inherited from java.lang.Object, it does not count as an abstract 
+    method. Therefore, Webby passes the single abstract method test for functional interfaces, making option D correct. 
+    Astra is incorrect because it contains two abstract methods, play() and fetch(). 
+    KC is incorrect because it does not extend Dog and does not contain any abstract methods. 
+    Finally, Georgette is incorrect because it contains two abstract methods, play() and jump().
+
+28. How many lines of the following declarations contain a compiler error?
+    import java.lang.annotation.*;
+
+    enum Colors { RED, BLUE, GREEN }
+    @Documented
+    public @interface Bouncy {
+        int value();
+        Colors color() default Colors.RED;
+        double size();
+    }
+    @Bouncy(999, size=10.0) class Trampoline {}
+
+    A. None
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation :
+    B. The declaration of Colors and Bouncy compile without issue. 
+    The declaration of Trampoline does not compile, though. The Bouncy annotation has two required elements, value() and size(), 
+    so the name of the element value cannot be dropped. For this reason, option B is correct.
+
+29. Fill in the blanks: The __________ annotation allows annotations from a superclass to be applied to a subclass, while the __________ annotation 
+    determines whether annotations are present in generated Javadoc. (Choose two.)
+
+    A. @Retention in the first blank
+    B. @Inherited in the first blank
+    C. @Subclass in the first blank
+    D. @Javadoc in the second blank
+    E. @Retention in the second blank
+    F. @Documented in the second blank
+
+    Explanation :
+    B,F. The @Inherited annotation determines whether annotations applied to a supertype are applied to its subtypes, 
+    while the @Documented annotation allows annotations to be included in generated Javadoc. For these reasons, options B and F are correct.
+
+30. Fill in the blank with the correct annotation usage that allows the code to compile without any warnings.
+    @Deprecated(since="5.0")
+    public class ProjectPlanner<T> {
+        ProjectPlanner create(T t) { return this; }
+    }
+    @SuppressWarnings(___________________)
+    class SystemPlanner {
+        ProjectPlanner planner = new ProjectPlanner().create("TPS");
+    }
+
+    A. value=ignoreAll
+    B. value="deprecation","unchecked"
+    C. "unchecked","deprecation"
+    D. {"deprecation","unchecked"}
+    E. "deprecation"
+    F. None of the above
+
+    Explanation :
+    D. The SystemPlanner class compiles although it contains two warnings. 
+    First, the ProjectPlanner class is used, which is deprecated. 
+    Second, the create() method uses an unchecked/unsafe operation taking a String for the generic type. 
+    For this reason, both unchecked and deprecation options are required for the code to compile without any warnings. 
+    Option D uses the correct format for passing an array to an annotation. Note that ignoreAll is not a known parameter that the JVM accepts
