@@ -57,9 +57,10 @@
     F. None of the above
 
     Explanation :
-    C. Option C uses the correct values and allows all three annotations to compile. Option A is 
-    incorrect because the class declaration usage does not compile. Using option B or E does not 
-    allow any of the annotations to compile. Option D allows the class and constructor annotations to compile, but not the method usage
+    C. Option C uses the correct values and allows all three annotations to compile. 
+    Option A is incorrect because the class declaration usage does not compile. 
+    Using option B or E does not allow any of the annotations to compile. 
+    Option D allows the class and constructor annotations to compile, but not the method usage
 
 5. Which of the following are marker annotations? (Choose three.)
 
@@ -561,3 +562,4 @@
     Second, the create() method uses an unchecked/unsafe operation taking a String for the generic type. 
     For this reason, both unchecked and deprecation options are required for the code to compile without any warnings. 
     Option D uses the correct format for passing an array to an annotation. Note that ignoreAll is not a known parameter that the JVM accepts
+

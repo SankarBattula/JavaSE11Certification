@@ -98,37 +98,68 @@ Single-Member Annotations :
 The Built-In Annotations :
     Java defines many built-in annotations. Most are specialized, but nine are general purpose
     Four are imported from java.lang.annotation:
-                @Retention - It specifies the retention policy
-                @Documented - It is a marker interface that tells a tool that an annotation is to be documented
-                @Target - It specifies the types of items to which an annotation can be applied 
-                          @Target takes one argument, which is an array of constants of the ElementType enumeration
-                          This argument specifies the types of declarations to which the annotation can be applied
-                          The constants are shown here along with the type of declaration to which they correspond
-                          @Target( { ElementType.FIELD, ElementType.LOCAL_VARIABLE } )
-                          -----------------------------------------------------
-                          Target Constant  |  Annotation Can Be Applied To
-                          -----------------------------------------------------
-                          ANNOTATION_TYPE  |  Another Annotation
-                          CONSTRUCTOR      |  Constructor
-                          FIELD            |  Field
-                          LOCAL_VARIABLE   |  Local Variable 
-                          METHOD           |  Method
-                          MODULE           |  Module
-                          PACKAGE          |  Package
-                          PARAMETER        |  Parameter
-                          TYPE             |  Class , interface, or enumeration 
-                          TYPE_PARAMETER   |  Type Parameter
-                          TYPE_USE         |  Type use
-                          You can specify one or more of these values in a @Target annotation. To specify multiple values, you must specify them within a braces-delimited list.
+        @Retention - It specifies the retention policy
+        @Documented - It is a marker interface that tells a tool that an annotation is to be documented
+        @Target - It specifies the types of items to which an annotation can be applied 
+            @Target takes one argument, which is an array of constants of the ElementType enumeration
+            This argument specifies the types of declarations to which the annotation can be applied
+            The constants are shown here along with the type of declaration to which they correspond
+            @Target( { ElementType.FIELD, ElementType.LOCAL_VARIABLE } )
+                -----------------------------------------------------
+                Target Constant  |  Annotation Can Be Applied To
+                -----------------------------------------------------
+                ANNOTATION_TYPE  |  Another Annotation
+                CONSTRUCTOR      |  Constructor
+                FIELD            |  Field
+                LOCAL_VARIABLE   |  Local Variable 
+                METHOD           |  Method
+                MODULE           |  Module
+                PACKAGE          |  Package
+                PARAMETER        |  Parameter
+                TYPE             |  Class , interface, or enumeration 
+                TYPE_PARAMETER   |  Type Parameter
+                TYPE_USE         |  Type use
+                ------------------------------------------------------
+            You can specify one or more of these values in a @Target annotation. To specify multiple values, you must specify them within a braces-delimited list.
                           
-                @Inherited - It is a marker annotation that can be used only on another annotation declaration.
-                
+            @Inherited - It is a marker annotation that can be used only on another annotation declaration.
+                Furthermore, it affects only annotations that will be used on class declarations.
+                @Inherited causes the annotation for a superclass to be inherited by a subclass
+                Therefore, when a request for a specific annotation is made to the subclass, if that annotation is not present in the subclass, 
+                then its superclass is checked
+                If that annotation is present in the superclass, and if it is annotated with @Inherited, then that annotation will be returned.
+
     Five are included in java.lang
-        @Override,@Deprecated, @FunctionalInterface, @SafeVarargs, and @SuppressWarnings
+        @Override  -  It is a marker annotation that can be used only on methods
+            A method annotated with @Override must override a method from a superclass. If it doesn’t, a compile-time error will result
+            It is used to ensure that a superclass method is actually overridden, and not simply overloaded
+        @Deprecated  -  It indicates that a declaration is obsolete and not recommended foruse
+        @FunctionalInterface  - is a marker annotation designed for use on interfaces
+            It indicates that the annotated interface is a functional interface. 
+            A functional interface is an interface that contains one and only one abstract method.
+            Functional interfaces are used by lambda expressions.
+        @SafeVarargs  -  It is a marker annotation that can be applied to methods and constructors
+            It indicates that no unsafe actions related to a varargs parameter occur
+            It is used to suppress unchecked warnings on otherwise safe code as it relates to non-reifiable vararg types and parameterized array instantiation
+            It must be applied only to vararg methods or constructors. Methods must also be static, final, or private
+        @SuppressWarnings  -  It specifies that one or more warnings that might be issued by the compiler are to be suppressed. 
+            The warnings to suppress are specified by name, in string form
 
-
-
-
+Type Annotations :
+    Type annotations are important because they enable tools to perform additional checks on code to help prevent errors.
+    void myMeth() throws @TypeAnno NullPointerException { // ...
+    Here, @TypeAnno annotates NullPointerException in the throws clause.
+    ----------------------------------------------
+    Annotation      |        Target
+    ----------------------------------------------
+    @TypeAnno       |  ElementType.TYPE_USE
+    @MaxLen         |  ElementType.TYPE_USE
+    @NotZeroLen     |  ElementType.TYPE_USE
+    @Unique         |  ElementType.TYPE_USE
+    @What           |  ElementType.TYPE_PARAMETER
+    @EmptyOk        |  ElementType.FIELD
+    @Recommended    |  ElementType.METHOD       
+    ----------------------------------------------
 
 Create Custom Annotation
     1. Class Level Annotation
