@@ -161,6 +161,10 @@ Type Annotations :
     @Recommended    |  ElementType.METHOD       
     ----------------------------------------------
 
+    Note : Notice that @EmptyOK, @Recommended, and @What are not type annotations. 
+           @What, which is used to annotate a generic type parameter declaration.
+
+
 Create Custom Annotation
     1. Class Level Annotation
     2. Field Level Annotation
