@@ -100,6 +100,27 @@
     ![image](https://user-images.githubusercontent.com/20484835/218273827-354ed90f-d28f-4b0c-8164-3d6cbfa95e34.png)
 
 **Consumer**
+
+  A Consumer is used when you want to do something with a parameter but not return anything. A BiConsumer is the same but takes two parameters. The definitions are shown below:
+  
+    @FunctionalInterface
+    public interface Consumer<T>{
+        void accept(T t);
+        // default method omitted
+    }
+
+    @FunctionalInterface
+    public interface BiConsumer<T, U>{
+        void accept(T t, U u);
+        // default method omitted
+    }
+  
+    Example :
+    Consumer<String> c1 = System.out::println;
+    Consumer<String> c2 = x-> System.out.println(x);
+
+    c1.accept("Hi");
+    c2.accept("Hi");
   
 - Consumer<T> Represents an operation that accepts a single (reference type) input argument and returns no result
 - DoubleConsumer : Accepts a single double-valued argument and returns no result
