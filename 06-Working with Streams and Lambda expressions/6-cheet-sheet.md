@@ -1,6 +1,6 @@
 
 
-![image](https://user-images.githubusercontent.com/20484835/218272252-fa7f1e9a-739a-4e0a-866b-0e32df41dc89.png)
+
 
 There are five basic functional interfaces that, by default, operate on a single reference type: Predicate, Unary Operator, Function, Supplier, Consumer and one which operates on two reference types — BinaryOperator
 Each of the six basic types has three variants that accept a primitive: double, int, or long
