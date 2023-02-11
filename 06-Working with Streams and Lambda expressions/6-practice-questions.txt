@@ -1,0 +1,92 @@
+
+1. The following figure represents a stream pipeline. Given this, would the boxes X, Y, Z best
+    represent?
+        X   --->    Y   --->    Z
+
+    A. Origin, intermediate operation, and final operation
+    B. Origin, intermediate operation, and sink
+    C. Origin, intermediate operation, and terminal operation
+    D. Source, intermediate operation, and final operation
+    E. Source, intermediate operation, and sink
+    F. Source, intermediate operation, and terminal operation
+
+    Explanation :
+    F. The source is the first operation, and the terminal operation comes last, making option F the answer. You need to know this terminology.
+
+2. Which of the following is required for all valid lambda expressions?
+
+    A. ()
+    B. ->
+    C. {}
+    D. Parameter data type(s)
+    E. None of the above
+
+    Explanation :
+    B. The lambda expression s -> true is valid, making options A, C, and D incorrect. 
+    Parentheses, (), are not required on the left-hand side if there is only one variable. 
+    Braces, {}, are not required if the right-hand side is a single expression. 
+    Parameter data types are only required if the data type for at least one parameter is specified; otherwise, none are required. 
+    The remaining choice, the arrow operator, ->, is required for all lambda expressions, 
+    making option B the correct answer.
+
+3. Fill in the blanks: The ______________ functional interface does not take any inputs, while
+    the ______________ functional interface does not return any data.
+
+    A. IntConsumer, LongSupplier
+    B. IntSupplier, Function
+    C. Supplier, DoubleConsumer
+    D. UnaryOperator, Consumer
+    E. None of the above
+
+    Explanation :
+    C. The Supplier functional interface does not take any inputs, while the Consumer functional interface does not return any data. 
+    This behavior extends to the primitive versions of the functional interfaces, making option C the correct answer. 
+    Option A is incorrect because IntConsumer takes a value, while LongSupplier returns a value. 
+    Options B and D are incorrect because Function and UnaryOperator both take an input and produce a value.
+
+4. What is the result of executing the following application multiple times?
+    package bears;
+    import java.util.*;
+    public class Bounce {
+        public static void main(String... legend) {
+        List.of(1,2,3,4).stream()
+            .forEach(System.out::println);
+        List.of(1,2,3,4).parallel()
+            .forEach(System.out::println);
+        List.of(1,2,3,4).parallel()
+            .forEachOrdered(System.out::println);
+    } }
+
+    A. Only the first stream prints the same order every time.
+    B. Only the first and second streams print the same order every time.
+    C. Only the first and third streams print the same order every time.
+    D. All of the streams print the same order every time.
+    E. None of the streams prints the same order every time.
+    F. None of the above.
+
+    Explanation :
+    F. A List instance, which inherits the Collection interface, does not have a parallel() method. 
+    Instead, parallelStream() must be used, making option F correct. 
+    If the code was corrected to use parallelStream(), then the first and third streams would be consistently printed in the same order. 
+    Remember that the forEachOrdered() method forces parallel streams to run in sequential order. 
+    The order of the second operation would be unknown ahead of time, since it uses a parallel stream.
+
+5. A lambda expression for which of the following functional interfaces could be used to return
+    a Double value? (Choose two.)
+
+    A. UnaryOperator
+    B. BiPredicate
+    C. BiOperator
+    D. BiConsumer
+    E. BiFunction
+    F. BiSupplier
+
+    Explanation :
+    A,E. The UnaryOperator and BiFunction return a generic argument, such as Double, making options A and E correct. 
+    Option B is incorrect because all predicate functions return boolean. 
+    Option C is incorrect because BiOperator does not exist in the java.util.function package. The correct name is BinaryOperator. 
+    Option D is incorrect because all consumer functions return void. 
+    Finally, option F is incorrect because BiSupplier does not exist in the java.util.function package. 
+    Supplier functions return values, and Java does not support methods with more than one return type.
+
+
