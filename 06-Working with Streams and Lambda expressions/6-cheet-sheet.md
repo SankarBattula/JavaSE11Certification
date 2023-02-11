@@ -83,7 +83,6 @@
   public interface Supplier<T>{
       T get();
   }
-  
   Example :
   
   Supplier<LocalDate> s1 = LocalDate::now;
