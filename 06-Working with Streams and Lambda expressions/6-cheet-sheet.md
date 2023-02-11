@@ -26,7 +26,33 @@
 - CONSUMER                : 	takes one (or two) arguments and returns no value (8 variants)
 
 **Predicate**    
+    A Predicate is often used when filtering or matching. A BiPredicate is the same but takes two parameters. The definitions are shown below:
+    @FunctionalInterface
+    public interface Predicate<T>{
+        boolean test(T t);
+        // default and static methods omitted
+    }
 
+    @FunctionalInterface
+    public interface BiPredicate<T, U>{
+        boolean test(T t, U t);
+        // default methods omitted
+    }
+  
+    Example for Predicate :
+    Predicate<String> p1 = String::isEmpty;
+    Predicate<String> p2 = x -> x.isEmpty();
+    System.out.println(p1,test(""); // true
+    System.out.println(p2,test(""); // true
+    
+    Example for BiPredicate :
+    BiPredicate<String, String> b1 = String::startsWith;
+    BiPredicate<String, String> b2 = (string, suffix) -> string.startsWith(prefix);
+
+    System.out.println(b1.test("chicken", "chick")); // true
+    System.out.println(b2.test("chicken", "chick")); // true
+    
+  
 - Predicate<T> : Represents a predicate (boolean-valued function) of one argument  (reference type)
 - DoublePredicate : Accepts one double-valued argument
 - IntPredicate : Accepts one int-valued argument.
