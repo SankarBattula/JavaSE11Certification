@@ -78,19 +78,19 @@
   
   A Supplier is used when you want to generate or supply values without taking any input. A supplier is often used to construct new objects. 
   The definition is shown  below:
-  ```
+ 
   @FunctionalInterface
   public interface Supplier<T>{
       T get();
   }
-  ```
-  example :
   
-    Supplier<LocalDate> s1 = LocalDate::now;
-    Supplier<LocalDate> s2 = () -> LocalDate.now();
+  Example :
+  
+  Supplier<LocalDate> s1 = LocalDate::now;
+  Supplier<LocalDate> s2 = () -> LocalDate.now();
 
-    LocalDate d1 = s1.get();
-    LocalDate d2 = s2.get();
+  LocalDate d1 = s1.get();
+  LocalDate d2 = s2.get();
   
 - Supplier<T> : Represents a supplier of results (reference type)
 - DoubleSupplier : A supplier of double-valued results
