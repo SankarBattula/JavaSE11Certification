@@ -27,6 +27,8 @@
 
 **Predicate**    
     A Predicate is often used when filtering or matching. A BiPredicate is the same but takes two parameters. The definitions are shown below:
+    
+    ```
     @FunctionalInterface
     public interface Predicate<T>{
         boolean test(T t);
@@ -51,7 +53,7 @@
 
     System.out.println(b1.test("chicken", "chick")); // true
     System.out.println(b2.test("chicken", "chick")); // true
-    
+    ```
   
 - Predicate<T> : Represents a predicate (boolean-valued function) of one argument  (reference type)
 - DoublePredicate : Accepts one double-valued argument
