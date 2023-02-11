@@ -115,12 +115,20 @@
         // default method omitted
     }
   
-    Example :
+    Example of Consumer :
     Consumer<String> c1 = System.out::println;
     Consumer<String> c2 = x-> System.out.println(x);
 
     c1.accept("Hi");
     c2.accept("Hi");
+  
+    Example of BiConsumer :
+    var map = new HashMap<String, Integer>();
+    BiConsumer<String, Integer> b1 = map::put;
+    BiConsumer<String, Integer> b2 = (k, v) -> map.put(k, v);
+
+    b1.accept("chicken", 7);
+    b2.accept("chick", 1);
   
 - Consumer<T> Represents an operation that accepts a single (reference type) input argument and returns no result
 - DoubleConsumer : Accepts a single double-valued argument and returns no result
