@@ -77,7 +77,33 @@
     ![image](https://user-images.githubusercontent.com/20484835/218273140-43012f56-3134-4fbe-9dc7-3c11fd70adb9.png)
 
 **Function**
-  
+    A Function turns one parameter into a value of a potentially different type and returns it. A BiFunction turns two parameters into a value and returns it. 
+    The definitions are shown below:
+    
+    @FunctionalInterface
+    public interface Function<T, R>{
+        R apply(T t);
+        // default and static methods omitted
+    }
+
+    @FunctionalInterface
+    public interface BiFunction<T, U, R>{
+        R apply(T t, U u);
+        // default method omitted
+    }
+    
+    Example of Function :
+    Function<String, Integer> f1 = String::length;
+    Function<String, Integer> f2 = x -> x.length();
+    System.out.println(f1.apply("cat")); // 3
+    System.out.println(f2.apply("cat")); // 3
+    
+    Example for BiFunction :
+    BiFunction<String, <String, String> b1 = String::concat;
+    BiFunction<String, <String, String> b2 = (string, toAdd) -> string.concat(toAdd);
+    System.out.println(b1.apply("cat ", "dog")); // cat dog
+    System.out.println(b2.apply("cat ", "dog")); // cat dog
+    
 - Function<T,R> : Represents a function that accepts one argument and produces a result (reference type)
 - BiFunction<T,U,R> : Represents a function that accepts two arguments and produces a result (reference type)
   
