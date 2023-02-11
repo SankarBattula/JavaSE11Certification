@@ -74,5 +74,24 @@
 - ToLongBiFunction<T,U> : Accepts two reference type arguments and produces a long-valued result 
     ![image](https://user-images.githubusercontent.com/20484835/218273330-7840e091-da0a-4b5c-9a62-41ad7aaaac88.png)
 
+**Supplier**
+  
+- Supplier<T> : Represents a supplier of results (reference type)
+- DoubleSupplier : A supplier of double-valued results
+- IntSupplier : A supplier of int-valued results
+- LongSupplier : A supplier of long-valued results
+- BooleanSupplier : A supplier of boolean-valued results
+    ![image](https://user-images.githubusercontent.com/20484835/218273827-354ed90f-d28f-4b0c-8164-3d6cbfa95e34.png)
 
+**Consumer**
+  
+- Consumer<T> Represents an operation that accepts a single (reference type) input argument and returns no result
+- DoubleConsumer : Accepts a single double-valued argument and returns no result
+- IntConsumer : Accepts a single int-valued argument and returns no result
+- LongConsumer : Accepts a single long-valued argument and returns no result
+- BiConsumer<T,U> : Represents an operation that accepts two (reference type) input arguments and returns no result
+- ObjDoubleConsumer<T> : Accepts an object-valued and a double-valued argument, and returns no result
+- ObjIntConsumer<T> : Accepts an object-valued and an int-valued argument, and returns no result
+- ObjLongConsumer<T> : Accepts an object-valued and a long-valued argument, and returns no result
+    ![image](https://user-images.githubusercontent.com/20484835/218273946-6ea0be1b-f1da-49d9-8af9-9586c4b1575b.png)
 
