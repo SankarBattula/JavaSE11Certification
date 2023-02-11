@@ -46,24 +46,24 @@
 
 **Unary Operator**
 
--UnaryOperator<T> : Represents an operation on a single operand that produces a result of the same type as its operand  (reference type)
+- UnaryOperator<T> : Represents an operation on a single operand that produces a result of the same type as its operand  (reference type)
 
--DoubleUnaryOperator : Accepts single double-valued operand and produces a double-valued result
+- DoubleUnaryOperator : Accepts single double-valued operand and produces a double-valued result
 
--IntUnaryOperator : Accepts a single int-valued operand and produces an int-valued result
+- IntUnaryOperator : Accepts a single int-valued operand and produces an int-valued result
 
--LongUnaryOperator : Accepts a single long-valued operand and produces a long-valued result
+- LongUnaryOperator : Accepts a single long-valued operand and produces a long-valued result
   
 **Binary Operator**
 
--BinaryOperator<T> : Represents an operation upon two operands of the same type, producing a result of the same type as the operands  (reference type)
+- BinaryOperator<T> : Represents an operation upon two operands of the same type, producing a result of the same type as the operands  (reference type)
 
--DoubleBinaryOperator : Accepts two double-valued operands and produces a double-valued result
+- DoubleBinaryOperator : Accepts two double-valued operands and produces a double-valued result
 
--IntBinaryOperator : Accepts two int-valued operands and produces an int-valued result
+- IntBinaryOperator : Accepts two int-valued operands and produces an int-valued result
 
--LongBinaryOperator : Accepts two long-valued operands and produces a long-valued result.
-  ![image](https://user-images.githubusercontent.com/20484835/218273140-43012f56-3134-4fbe-9dc7-3c11fd70adb9.png)
+- LongBinaryOperator : Accepts two long-valued operands and produces a long-valued result.
+    ![image](https://user-images.githubusercontent.com/20484835/218273140-43012f56-3134-4fbe-9dc7-3c11fd70adb9.png)
 
   
 
