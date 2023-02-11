@@ -16,7 +16,9 @@ Supplier has a variant that returns a boolean
 
 BiConsumer has three variants that accept a reference type and a primitive: double, int, or long
 
-https://github.com/SankarBattula/JavaSE11Certification/blob/main/06-Working%20with%20Streams%20and%20Lambda%20expressions/function%20Interfaces%20Cheat%20Sheet.pdf
+![image](https://github.com/SankarBattula/JavaSE11Certification/blob/main/06-Working%20with%20Streams%20and%20Lambda%20expressions/function%20Interfaces%20Cheat%20Sheet.pdf)
 
+
+![image](https://user-images.githubusercontent.com/20484835/218272482-0d9b3e2b-d1cc-4f26-b28e-5314104acf6d.png)
 
 
