@@ -41,3 +41,5 @@
 - LongPredicate : Accepts one long-valued argument
 
 - BiPredicate<T,U> : Accepts two arguments  (reference types)
+  ![image](https://user-images.githubusercontent.com/20484835/218272973-a4f0f815-2554-4506-a05d-34278817ee30.png)
+
