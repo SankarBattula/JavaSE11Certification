@@ -29,3 +29,15 @@
 - SUPPLIER                : 	takes no arguments, returns a value ( 5 variants )
 
 - CONSUMER                : 	takes one (or two) arguments and returns no value (8 variants)
+
+**Predicate**    
+
+- Predicate<T> : Represents a predicate (boolean-valued function) of one argument  (reference type)
+
+- DoublePredicate : Accepts one double-valued argument
+
+- IntPredicate : Accepts one int-valued argument.
+
+- LongPredicate : Accepts one long-valued argument
+
+- BiPredicate<T,U> : Accepts two arguments  (reference types)
