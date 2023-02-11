@@ -16,7 +16,7 @@ Supplier has a variant that returns a boolean
 
 BiConsumer has three variants that accept a reference type and a primitive: double, int, or long
 
-****Basic Types:****
+**Basic Types:**
 
 PREDICATE              |	takes one (or two) argument(s) and returns a boolean (5 variants)
 
