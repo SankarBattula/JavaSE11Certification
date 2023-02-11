@@ -77,6 +77,7 @@
     ![image](https://user-images.githubusercontent.com/20484835/218273140-43012f56-3134-4fbe-9dc7-3c11fd70adb9.png)
 
 **Function**
+    
     A Function turns one parameter into a value of a potentially different type and returns it. A BiFunction turns two parameters into a value and returns it. 
     The definitions are shown below:
     
