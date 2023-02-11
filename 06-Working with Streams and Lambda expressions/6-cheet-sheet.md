@@ -64,7 +64,7 @@
 **Unary Operator**
     
     A UnaryOperator is a special case of a Function where all the type parameters are the same type. The definitions are shown below:
-
+    
     @FunctionalInterface
     public interface UnaryOperator<T> extends Function<T, T>{}
 
