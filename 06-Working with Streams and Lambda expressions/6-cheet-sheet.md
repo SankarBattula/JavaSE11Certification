@@ -65,6 +65,41 @@
 - LongBinaryOperator : Accepts two long-valued operands and produces a long-valued result.
     ![image](https://user-images.githubusercontent.com/20484835/218273140-43012f56-3134-4fbe-9dc7-3c11fd70adb9.png)
 
-  
+**Function**
+- Function<T,R> : Represents a function that accepts one argument and produces a result (reference type)
+
+- DoubleFunction<R> : Accepts a double-valued argument and produces a result
+
+- IntFunction<R> : Accepts an int-valued argument and produces a result
+
+- LongFunction<R> : Accepts a long-valued argument and produces a result
+
+- DoubleToIntFunction : Accepts a double-valued argument and produces an int-valued result
+
+- DoubleToLongFunction : Accepts a double-valued argument and produces a long-valued result
+
+- IntToDoubleFunction : Accepts an int-valued argument and produces a double-valued result
+
+- IntToLongFunction : Accepts an int-valued argument and produces a long-valued result
+
+- LongToIntFunction : Accepts a long-valued argument and produces an int-valued result
+
+- LongToDoubleFunction : Accepts a long-valued argument and produces a double-valued result.
+
+- ToDoubleFunction<T> : Accepts a reference type and produces an int-valued result
+
+- ToIntFunction<T> : Accepts a reference type and produces an int-valued result
+
+- ToLongFunction<T> : Accepts a reference type and produces a long-valued result.
+
+- BiFunction<T,U,R> : Represents a function that accepts two arguments and produces a result (reference type)
+
+- ToDoubleBiFunction<T,U> : Accepts two reference type arguments and produces a double-valued result
+
+- ToIntBiFunction<T,U> : Accepts two reference type arguments and produces an int-valued result
+
+- ToLongBiFunction<T,U> : Accepts two reference type arguments and produces a long-valued result 
+    ![image](https://user-images.githubusercontent.com/20484835/218273330-7840e091-da0a-4b5c-9a62-41ad7aaaac88.png)
+
 
 
