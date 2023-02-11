@@ -62,7 +62,18 @@
 
 
 **Unary Operator**
+    
+    A UnaryOperator is a special case of a Function where all the type parameters are the same type. The definitions are shown below:
 
+    @FunctionalInterface
+    public interface UnaryOperator<T> extends Function<T, T>{}
+
+    Example for UnaryOperator :
+    UnaryOperator<String> u1 = String::toUpperCase;
+    UnaryOperator<String> u2 = x -> x.toUpperCase();
+    System.out.println(u1.apply("hi")); // HI
+    System.out.println(u2.apply("hi")); // HI
+    
 - UnaryOperator<T> : Represents an operation on a single operand that produces a result of the same type as its operand  (reference type)
 - DoubleUnaryOperator : Accepts single double-valued operand and produces a double-valued result
 - IntUnaryOperator : Accepts a single int-valued operand and produces an int-valued result
@@ -70,11 +81,19 @@
  
 **Binary Operator**
     
-    A UnaryOperator is a special case of a Function where all the type parameters are the same type. A BinaryOperator merges two values into one of the same type. 
-    The definitions are shown below:
-    ![image](https://user-images.githubusercontent.com/20484835/218275227-aead60f1-a072-47ff-a3da-e1dcca9d44c3.png)
+    A BinaryOperator merges two values into one of the same type. The definitions are shown below:
+    
+    @FunctionalInterface
+    public interface BinaryOperator<T> extends BiFunction<T,T,T>{
+    // omitted static methods
+    }
+    
+    Example for BinaryOperator :
+    BinaryOperator<String> b1 = String::concat;
+    BinaryOperator<String> b2 = (string, toAdd) -> string.concat(toAdd);
+    System.out.println(u1.apply("hi ", "there")); // hi there
+    System.out.println(u2.apply("hi ", "there")); // hi there
 
-  
 - BinaryOperator<T> : Represents an operation upon two operands of the same type, producing a result of the same type as the operands  (reference type)
 - DoubleBinaryOperator : Accepts two double-valued operands and produces a double-valued result
 - IntBinaryOperator : Accepts two int-valued operands and produces an int-valued result
