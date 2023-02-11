@@ -59,7 +59,6 @@
 - IntFunction<R> : Accepts an int-valued argument and produces a result
 - LongFunction<R> : Accepts a long-valued argument and produces a result
   
-  
 - DoubleToIntFunction : Accepts a double-valued argument and produces an int-valued result
 - DoubleToLongFunction : Accepts a double-valued argument and produces a long-valued result
 - IntToDoubleFunction : Accepts an int-valued argument and produces a double-valued result
@@ -73,7 +72,6 @@
 - ToDoubleBiFunction<T,U> : Accepts two reference type arguments and produces a double-valued result
 - ToIntBiFunction<T,U> : Accepts two reference type arguments and produces an int-valued result
 - ToLongBiFunction<T,U> : Accepts two reference type arguments and produces a long-valued result 
-  
     ![image](https://user-images.githubusercontent.com/20484835/218273330-7840e091-da0a-4b5c-9a62-41ad7aaaac88.png)
 
 
