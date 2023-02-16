@@ -4,17 +4,7 @@
 - Java has primitive and reference variables. The Java compiler and JVM inherently know what primitive types mean, while reference data types are built by combining primitive data types and other reference data types.
 
 - Primitive data types are shown below:
-
-Date Type	Size	Description	Sample
-byte	1 byte	-128 to 127	-1, 0, 1
-short	2 bytes	-32,768 to 32,767	-1, 0, 1
-int	4 bytes	-2,147,483,648 to 2,147,483,647	-1, 0, 1
-long	8 bytes	-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807	-1, 0, 1
-float	4 bytes	Stores fractional numbers. Sufficient for storing 6 to 7 decimal digits	1.1f, 2.0f
-double	8 bytes	Stores fractional numbers. Sufficient for storing 15 decimal digits	1.1d, 2.0d
-boolean	1 bit	Stores true or false values	true, false
-char	2 bytes	Stores a single character	'\u0000', 'a'
-Wrapper classes exist for Byte, Short, Integer, Long, Float and Double.
+  ![image](https://user-images.githubusercontent.com/20484835/219260443-3ab130d7-ffab-47b3-8b09-40e56e042aea.png)
 
 - Reference types include:
 
@@ -110,4 +100,4 @@ Wrapper classes exist for Byte, Short, Integer, Long, Float and Double.
   String toString();
   ```
 
-The value to append is typically determined by String.valueOf().
+- The value to append is typically determined by String.valueOf().
