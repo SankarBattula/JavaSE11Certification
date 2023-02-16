@@ -3,7 +3,7 @@
 This includes normal operations, exceptional situations, and unknown exceptional situations. 
 This is shown below:
 
-
+```
 try{    
     // code for normal course of action
 } catch(SecurityException se) {
@@ -15,3 +15,4 @@ catch(Throwable t) {
     System.out.println("Some problem in copying: "+t.getMessage());
     t.printStackTrace();
 }
+```
