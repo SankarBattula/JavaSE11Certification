@@ -1,0 +1,548 @@
+1. Which of the following are not valid variable names? (Choose two.)
+    A. _
+    B. _blue
+    C. 2blue
+    D. blue$
+    E. Blue
+
+    Explanation :
+    A,C. An identifier name must begin with a letter, dollar sign ($), or underscore (_). 
+    Numbers are permitted only for subsequent characters. Therefore, option C is not a valid variable name. 
+    Additionally, an identifier may not be a single underscore, making option A an invalid variable name.
+
+2. What is the value of tip after executing the following code snippet?
+    int meal = 5;
+    int tip = 2;
+    var total = meal + (meal>6 ? tip++ : tip--);
+    A. 1
+    B. 2
+    C. 3
+    D. 7
+    E. None of the above
+
+    Explanation :
+    A. In a ternary expression, only one of the two right-most expressions is evaluated. Since meal>6 is false, tip-- is evaluated, and tip++ is skipped. 
+    The result is that tip is changed from 2 to 1, making option A the correct answer. 
+    The value of total is 7, since the post-decrement operator was used on tip, although you did not need to know this to solve the question.
+
+3. Which is equivalent to var q = 4.0f;?
+
+    A. float q = 4.0f;
+    B. Float q = 4.0f;
+    C. double q = 4.0f;
+    D. Double q = 4.0f;
+    E. Object q = 4.0f;
+
+    Explanation :
+    A. The f in 4.0f means the type is a float, making option A correct. 
+    Local variable type inference chooses an exact match rather than using autoboxing to choose Float.
+
+4. What is the output of the following?
+
+    12: var b = "12";
+    13: b += "3";
+    14: b.reverse();
+    15: System.out.println(b.toString());
+    A. 12
+    B. 123
+    C. 321
+    D. The code does not compile.
+
+    Explanation :
+    D. Trick question. There is no reverse method on the String class. There is one on the StringBuilder class. 
+    Therefore, the code does not compile, and option D is correct.
+
+5. What is the output of the following?
+
+    5: var line = new StringBuilder("-");
+    6: var anotherLine = line.append("-");
+    7: System.out.print(line == anotherLine);
+    8: System.out.print(" ");
+    9: System.out.print(line.length());
+
+    A. false 1
+    B. false 2
+    C. true 1
+    D. true 2
+    E. It does not compile.
+
+    Explanation :
+    D. A StringBuilder is mutable, so the length is 2 after line 6 completes. The 
+    StringBuilder methods return a reference to the same object, so you can chain method 
+    calls. Therefore, line and anotherLine refer to the same object. This means that line 7 
+    prints true. Then on line 9, both references point to the same object of length 2, and option 
+    D is correct.
+
+6. Given the following Venn diagram and the boolean variables, apples, oranges, and
+    bananas, which expression most closely represents the filled-in region of the diagram?
+
+    apples          oranges
+
+            bananas
+    
+    A. apples && oranges && !bananas
+    B. orange || (oranges && !bananas)
+    C. (apples || bananas) && oranges
+    D. oranges && apples
+    E. (apples || oranges) && !bananas
+    F. apples ^ oranges
+
+    Explanation :
+
+    E. The diagram represents all cases where apples or oranges is true, but bananas is false, making option E correct. 
+    Option A is close but is correct only if the top overlapping portion of apples and oranges was filled in. 
+    For fun, you should try to draw the diagrams that would represent the other answers
+
+7. What is the output of the following?
+
+    5: var line = new String("-");
+    6: var anotherLine = line.concat("-");
+    7: System.out.print(line == anotherLine);
+    8: System.out.print(" ");
+    9: System.out.print(line.length());
+
+    A. false 1
+    B. false 2
+    C. true 1
+    D. true 2
+    E. Does not compile
+
+    Explanation :
+    A. A String is immutable, so a different object is returned on line 6. The object anotherLine points to is of length 2 after line 6 completes. 
+    However, the original line reference still points to an object of length 1. Therefore, option A is correct.
+
+8. Which can fill in the blank? (Choose two.)
+
+    public void math() {
+    _____ pi = 3.14;
+    }
+
+    A. byte
+    B. double
+    C. float
+    D. short
+    E. var
+
+    Explanation :
+    B,E. Options A and D are incorrect because byte and short do not store values with decimal points. 
+    Option C is tempting. However, 3.14 is automatically a double. It requires casting to float or writing 3.14f to be assigned to a float. Therefore, option B is correct. 
+    Additionally, option E is correct because local variable type inference is able to automatically determine the type is double.
+
+9. Fill in the blanks: The operators !=, _______, _______, _______, and ++ are listed in the same
+    or increasing level of operator precedence. (Choose two.)
+
+    A. ==, *, !
+    B. /, %, *
+    C. *, --, /
+    D. !, *, %
+    E. +=, &&, *
+    F. *, <, /
+
+    Explanation :
+    A,B. Option A is correct and lists the operators in the same or increasing level of operator precedence. 
+    In option B, the three operators actually have the same operator precedence, so it is correct. 
+    Option C is incorrect, as division (/) has a lower precedence than the decrement operator (--). 
+    Option D is incorrect because the logical complement operator (!) has a higher order of precedence than the other two operators. 
+    Option E lists the operators in the correct order, but they don’t fit within not equals (!=) and the increment operator (++) as listed in the question. 
+    In particular, compound addition operator (+=) and short-circuit logical operator (&&) have a lower precedence than the not equals operator (!=). 
+    Finally, option F is incorrect because the relational operator (<) does not fit between multiplication operator (*) and the division operator (/) in order of precedence.
+
+10. How many of these compile?
+
+    18: Comparator<String> c1 = (j, k) -> 0;
+    19: Comparator<String> c2 = (String j, String k) -> 0;
+    20: Comparator<String> c3 = (var j, String k) -> 0;
+    21: Comparator<String> c4 = (var j, k) -> 0;
+    22: Comparator<String> c5 = (var j, var k) -> 0;
+
+    A. 0
+    B. 1
+    C. 2
+    D. 3
+    E. 4
+    F. 5
+
+    Explanation :
+    D. Line 18 compiles because neither type is specified for the lambda parameters. Lines 19 and 22 compile because the lambda parameters use a type or var consistently. 
+    These are the three lines that compile, making option D correct. 
+    Lines 20 and 21 do not compile because var must be used for all parameters in a lambda if it is used for any.
+
+11. The author of this method forgot to include the data type. Which of the following reference
+    types can best fill in the blank to complete this method?
+    public static void secret(___________ mystery) {
+        char ch = mystery.charAt(3);
+        mystery = mystery.insert(1, "more");
+        int num = mystery.length();
+    }
+
+    A. String
+    B. StringBuilder
+    C. Both
+    D. Neither
+
+    Explanation :
+    B. The charAt() and length() methods are declared on both String and StringBuilder. 
+    However, the insert() method is declared only on a StringBuilder and not a String. 
+    Therefore, option B is correct.
+
+12. What is the output of the following?
+
+    var teams = new StringBuilder("333");
+    teams.append(" 806");
+    teams.append(" 1601");
+    System.out.print(teams);
+
+    A. 333
+    B. 333 806 1601
+    C. The code compiles but outputs something else.
+    D. The code does not compile.
+
+    Explanation :
+    B. Since StringBuilder is mutable, each call to append adds to the value. When calling print, toString() is automatically called, and 333 806 1601 is output. 
+    Therefore, option B is correct.
+
+13. Which of the following declarations does not compile?
+
+    A. double num1, int num2 = 0;
+    B. int num1, num2;
+    C. int num1, num2 = 0;
+    D. int num1 = 0, num2 = 0;
+    E. All of the above
+    F. None of the above
+
+    Explanation :
+    A. Option A does not compile because Java does not allow declaring different types as part of the same declaration. 
+    The other three options show various legal combinations of combining multiple variables in the same declarations with optional default values.
+
+14. Given the file Magnet.java shown, which of the marked lines can you independently insert
+    the line var color; into and still have the code compile?
+    // line a1
+    public class Magnet {
+        // line a2
+        public void attach() {
+            // line a3
+        }
+        // line a4
+    }
+
+    A. a2
+    B. a3
+    C. a2 and a3
+    D. a1, a2, a3, and a4
+    E. None of the above
+
+    Explanation :
+    E. Local variable type inference requires a value, so that the type can be inferred. The statement var color; without a value is not allowed, making option E the answer.
+
+15. Which is one of the lines output by this code?
+
+    10: var list = new ArrayList<Integer>();
+    11: list.add(10);
+    12: list.add(9);
+    13: list.add(8);
+    14:
+    15: var num = 9;
+    16: list.removeIf(x -> {int keep = num; return x != keep;});
+    17: System.out.println(list);
+    18:
+    19: list.removeIf(x -> {int keep = num; return x == keep;});
+    20: System.out.println(list);
+
+    A. []
+    B. [8, 10]
+    C. [8, 9, 10]
+    D. [10, 8]
+    E. The code does not compile.
+
+    Explanation :
+    A. The code starts by creating a list of three elements. On line 16, it removes two elements and then removes the final one on line 19. 
+    This prints an empty list, making option A the correct answer. Note that num is effectively final, so can be used in a lambda.
+
+16. Which of the following can fill in the blank so the code prints true?
+    var happy = " :) - (: ";
+    var really = happy.trim();
+    var question = _____________________;
+    System.out.println(really.equals(question));
+
+    A. happy.substring(0, happy.length() - 1)
+    B. happy.substring(0, happy.length())
+    C. happy.substring(1, happy.length() - 1)
+    D. happy.substring(1, happy.length())
+
+    Explanation :
+    C. The trim() method returns a String with all leading and trailing white space removed. 
+    In this question, that’s the seven-character String: ":) - (:". 
+    Options A and B are incorrect because they do not remove the first blank space in happy. 
+    Option D is incorrect because it does not remove the last character in happy. Therefore, option C is correct
+
+17. How many of the following lines contain a compiler error?
+
+    double num1 = 2.718;
+    double num2 = 2._718;
+    double num3 = 2.7_1_8;
+    double num4 = _2.718;
+
+    A. 0
+    B. 1
+    C. 2
+    D. 3
+    E. 4
+
+    Explanation :
+    C. Underscores are allowed between any two digits in a numeric literal, causing num4 to fail to compile. 
+    Additionally, underscores are not allowed adjacent to a decimal point, causing a compiler error in num2. 
+    Since two lines have errors, option C is the correct answer.
+
+18. What is the output of the following application?
+
+    public class Airplane {
+        static int start = 2;
+        final int end;
+        public Airplane(int x) {
+            x = 4;
+            end = x;
+        }
+        public void fly(int distance) {
+            System.out.print(end-start+" ");
+            System.out.print(distance);
+        }
+        public static void main(String... start) {
+            new Airplane(10).fly(5);
+        }
+    }
+
+    A. 2 5
+    B. 8 5
+    C. 6 5
+    D. The code does not compile.
+    E. None of the above.
+
+    Explanation :
+    A. The code compiles, so option D is incorrect. The input to the constructor is ignored, making the assignment of end to be 4. 
+    Since start is 2, the subtraction of 4 by 2 results in the application printing 2, followed by 5, making option A the correct answer.
+
+19. What is the output of the following class?
+
+    1: package rocket;
+    2: public class Countdown {
+    3:      public static void main(String[] args) {
+    4:          var builder = "54321";
+    5:          builder = builder.substring(4);
+    6:          System.out.println(builder.charAt(2));
+    7:      }
+    8: }
+
+    A. 2
+    B. 3
+    C. 4
+    D. None of the above
+
+    Explanation :
+    D. Line 4 creates a String of length 5. Since String is immutable, line 5 creates a new String with the value 1 and assigns it to builder. 
+    Remember that indexes in Java begin with zero, so the substring() method is taking the values from the fifth element through the end. 
+    Since the first element is the last element, there’s only one character in there. Then line 6 tries to retrieve the second indexed element. 
+    Since there is only one element, this gives a StringIndexOutOfBoundsException, and option D is correct.
+
+20. What is the output of the following application?
+    package transporter;
+    public class Rematerialize {
+        public static void main(String[] input) {
+            int init = 11;
+            int split = 3;
+            int partA = init / split;
+            int partB = init % split;
+            int result = split * (partB + partA);
+            System.out.print(result);
+        }
+    }
+
+    A. 9
+    B. 11
+    C. 12
+    D. 15
+    E. The code does not compile.
+    F. None of the above.
+
+    Explanation :
+    D. The code compiles and runs without issue, making option E incorrect. In this example, partA is the integer division of the two numbers. 
+    Since 3 does not divide 11 evenly, it is rounded down to 3. The variable partB is the remainder from the first expression, which is 2. 
+    The results are added together, resulting in the expression 3 * 5, or 15, and making option D correct.
+
+21. What is the result of the following code?
+    var sb = new StringBuilder("radical")
+    .insert(sb.length(), "robots");
+    System.out.println(sb);
+
+    A. radicarobots
+    B. radicalrobots
+    C. The code does not compile.
+    D. The code compiles but throws an exception at runtime.
+
+    Explanation :
+    C. Calling the constructor and then insert() is an example of method chaining. However, the sb.length() call is a problem. 
+    The sb reference doesn’t exist until after the chained calls complete. 
+    Just because it happens to be on a separate line doesn’t change when the reference is created. Since the code does not compile, option C is correct.
+
+22. Given the following code snippet, what is the value of dinner after it is executed?
+    int time = 9;
+    int day = 3;
+    var dinner = ++time >= 10 ? day-- <= 2
+    ? "Takeout" : "Salad" : "Leftovers";
+
+    A. Takeout
+    B. Leftovers
+    C. Salad
+    D. The code does not compile but would compile if parentheses were added.
+    E. None of the above.
+
+    Explanation :
+    C. While parentheses are recommended for ternary operations, especially embedded ones, they are not required, so option D is incorrect. 
+    The first expression evaluates to 10 >= 10, so the first branch of the ternary operation is selected, and "Leftovers" can be eliminated. 
+    The expression in the second ternary operation evaluates to 3 <= 2, which is false, so "Salad" is selected, and option C is correct.
+
+23. What is the output of the following?
+    var teams = new String("694");
+    teams.concat(" 1155");
+    teams.concat(" 2265");
+    teams.concat(" 2869");
+    System.out.println(teams);
+
+    A. 694
+    B. 694 1155 2265 2869
+    C. The code compiles but outputs something else.
+    D. The code does not compile.
+
+    Explanation :
+    A. Since String is immutable, each call to concat() returns a new object with the new value. 
+    However, that return value is ignored, and the teams variable never changes in value. 
+    Therefore, it stays as 694, and option A is correct.
+
+24. How many of the following lines compile?
+    bool b = null;
+    Bool bl = null;
+    int i = null;
+    Integer in = null;
+    String s = null;
+
+    A. None
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation 
+    C. First, bool and Bool are not valid Java types. They should be boolean and Boolean, respectively. Next, objects are allowed to have a null reference while primitives cannot. 
+    Since Integer and String are objects, those lines compile. Finally, the line with int is a primitive, so assigning null to it does not compile. Therefore, option C is correct.
+
+25. What is the output of the following code snippet?
+    int height = 2, length = 3;
+    boolean w = height > 1 | --length < 4;
+    var x = height!=2 ? length++ : height;
+    boolean z = height % length == 0;
+    System.out.println(w + "-" + x + "-" + z);
+
+    A. true-2-true
+    B. false-2-false
+    C. true-2-false
+    D. true-3-false
+    E. true-3-true
+    F. false-3-false
+
+    Explanation :
+    A. In the first expression, height > 1 is true. 
+    Since it uses the logical operator (|), which evaluates both sides, the right side is still executed, resulting in length being assigned a value of 2 and w assigned a value of true. 
+    In the second expression, only the right-hand side of the expression is evaluated, so x is assigned a value of 2, and length is unchanged. 
+    The last expression evaluates to 2 % 2, which is 0, so z is assigned a value of 0.
+
+26. What is the output of the following?
+    1: public class Legos {
+    2:      public static void main(String[] args) {
+    3:          var sb = new StringBuilder();
+    4:          sb.append("red");
+    5:          sb.deleteCharAt(0);
+    6:          sb.delete(1, 2);
+    7:          System.out.println(sb);
+    8:      }
+    9: }
+
+    A. e
+    B. d
+    C. ed
+    D. None of the above
+
+    Explanation :
+    A. Line 3 creates an empty StringBuilder. 
+    Line 4 adds three characters to it. 
+    Line 5 removes the first character, resulting in ed. 
+    Line 6 deletes the characters starting at position 1 and ending right before position 2, which removes the character at index 1, which is d. 
+    The only character left is e, so option A is correct.
+
+27. Which is a true statement?
+    A. If s.contains("abc") is true, then s.equals("abc") is also true.
+    B. If s.contains("abc") is true, then s.startsWith("abc") is also true.
+    C. If s.startsWith("abc") is true, then s.equals("abc") is also true.
+    D. If s.startsWith("abc") is true, then s.contains("abc") is also true.
+
+    Explanation :
+    D. Options A and B are not true if the String is "deabc". 
+    Option C is not true if the String is "abcde". 
+    Option D is true in all cases.
+
+28. What is the output of the following code snippet?
+    boolean carrot = true;
+    Boolean potato = false;
+    var broccoli = true;
+    carrot = carrot & potato;
+    broccoli = broccoli ? !carrot : potato;
+    potato = !broccoli ^ carrot;
+    System.out.println(carrot + "," + potato + "," + broccoli);
+
+    A. true,false,true
+    B. true,true,true
+    C. false,false,false
+    D. false,true,true
+    E. false,false,true
+    F. The code does not compile.
+
+    Explanation :
+    E. The code compiles, so option F is incorrect. The first expression evaluates to true & false, which sets carrot to false. 
+    The next expression resolves to true ? true : false, which results in broccoli being set to true. 
+    The last expression reduces to false ^ false, which sets potato to false. Therefore, option E is the correct output.
+
+29. What does this code output?
+    var babies = Arrays.asList("chick", "cygnet", "duckling");
+    babies.replaceAll(x -> { var newValue = "baby";
+        return newValue; });
+    System.out.println(babies);
+
+    A. [baby]
+    B. [baby, baby, baby]
+    C. [chick, cygnet, duckling]
+    D. None of the above.
+    E. The code does not compile.
+
+    Explanation :
+    B. The code successfully defines a local variable inside the lambda. Each value is replaced with baby. 
+    Since we have a List, all three are output, and option B is the correct answer.
+
+30. What is the output of the following class?
+    1: package rocket;
+    2: public class Countdown {
+    3:      public static void main(String[] args) {
+    4:          var builder = new StringBuilder("54321");
+    5:          builder.substring(2);
+    6:          System.out.println(builder.charAt(1));
+    7:      }
+    8: }
+
+    A. 1
+    B. 2
+    C. 3
+    D. 4
+    E. Does not compile
+
+    Explanation :
+    D. Line 4 creates a StringBuilder of length 5. Pay attention to the substring() method in StringBuilder. It returns a String with the value 321. 
+    It does not change the StringBuilder itself. Then line 6 retrieves the second indexed element from that unchanged value, which is 4. 
+    Therefore, option D is correct.
