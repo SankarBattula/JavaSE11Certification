@@ -1,0 +1,475 @@
+
+1. What is the output of the following application?
+    package dnd;
+    final class Story {
+        void recite(int chapter) throws Exception {}
+    }
+    public class Adventure extends Story {
+        final void recite(final int chapter) { // g1
+            switch(chapter) { // g2
+                case 2: System.out.print(9);
+                default: System.out.print(3);
+            }
+        }
+        public static void main(String... u) {
+            var bedtime = new Adventure();
+            bedtime.recite(2);
+        }
+    }
+
+    A. 3
+    B. 9
+    C. 93
+    D. The code does not compile because of line g1.
+    E. The code does not compile because of line g2.
+    F. None of the above.
+
+    Explanation :
+    F. The program does not compile because Story is marked final, which means it cannot be extended by Adventure. 
+    If the final modifier were removed, the rest of the code would compile and print 93 at runtime.
+
+2. Which of the following lines of code are not permitted as the first line of a Java class file?
+    (Choose two.)
+
+    A. import widget.*;
+    B. // Widget Manager
+    C. int facilityNumber;
+    D. package sprockets;
+    E. /** Author: Cid **/
+    F. void produce() {}
+
+    Explanation :
+    C,F. A class can start with a comment, an optional package statement, or an import statement if there is no package statement. 
+    It cannot start with a variable definition or method declaration, since those cannot be declared outside a type. 
+    Therefore, options C and F are correct.
+
+3. Which of the following modifiers can be applied to an abstract method? (Choose two.)
+    A. final
+    B. private
+    C. public
+    D. default
+    E. protected
+    F. concrete
+
+    Explanation :
+    C,E. An abstract method cannot include the final or private modifier. 
+    If a method contained either of these modifiers, then no concrete subclass would ever be able to override it with an implementation. 
+    For these reasons, options A and B are incorrect. 
+    Option D is also incorrect because the default keyword applies to concrete interface methods, not abstract methods. 
+    Option F is incorrect because there is no concrete modifier. T
+    hat leaves options C and E as the correct answer. 
+    The protected, package-private, and public access modifiers can each be applied to abstract methods.
+
+4. What is the result of compiling and executing the following class?
+    1: public class ParkRanger {
+    2:      int birds = 10;
+    3:      public static void main(String[] data) {
+    4:          var trees = 5;
+    5:          System.out.print(trees+birds);
+    6:      }
+    7: }
+
+    A. It compiles and outputs 5.
+    B. It compiles and outputs 15.
+    C. It does not compile.
+    D. It compiles but throws an exception at runtime.
+
+    Explanation :
+    C. The code does not compile because of line 5, making option C the correct answer. For this question, it helps to understand variable scope. 
+    The main() method is static and does not have access to any class instance variables. 
+    The birds variable is not static and requires a class instance variable to access. 
+    Therefore, the code does not compile when the static method attempts to access a non-static variable without an instance of the class.
+
+5. Fill in the blanks: The ___________________ access modifier allows access to everything the
+    ___________________ access modifier does and more.
+
+    A. package-private, protected
+    B. private, package-private
+    C. private, protected
+    D. private, public
+    E. public, private
+    F. None of the above
+
+    Explanation :
+    E. The public access modifier allows access to members in the same class, package, subclass, or even classes in other packages, 
+    while the private modifier allows access only to members in the same class. 
+    Therefore, the public access modifier allows access to everything the private access modifier does, and more, making option E the correct answer. 
+    Options A, B, C, and D are incorrect because the first term is a more restrictive access modifier than the second term.
+
+6. Which set of modifiers, when added to a default method within an interface, prevents it from
+    being overridden by a class implementing the interface?
+
+    A. const
+    B. final
+    C. static
+    D. private
+    E. private static
+    F. None of the above
+
+    Explanation :
+    F. There is no modifier that can prevent a default method from being overridden in a class implementing an interface, making option F correct.
+
+7. Given the following application, fill in the missing values in the table starting from the top
+    and going downward.
+    package competition;
+    public class Robot {
+        static String weight = "A lot";
+        double ageMonths = 5, ageDays = 2;
+        private static boolean success = true;
+        public void main(String[] args) {
+            final String retries = "1";
+            // P1
+        }
+    }
+    --------------------------------------------------------
+    | Variable Type  | Number of Variables Accessible at P1 |
+    ---------------------------------------------------------
+    | Class          | _____                                |
+    | Instance       | _____                                |
+    | Local          | _____                                |
+    ---------------------------------------------------------
+
+    A. 2, 0, 1
+    B. 2, 2, 1
+    C. 1, 0, 1
+    D. 0, 2, 1
+
+    Explanation :
+    B. Notice in this question that main() is not a static method; therefore, it can access both class and instance variables. 
+    Since there are two class variables and two instance variables defined, option B is the correct answer.
+
+8. Given the following code, what values inserted, in order, into the blank lines allow the code
+    to compile? (Choose two.)
+    _______ agent;
+    public _______ Banker {
+        private static _______ getMaxWithdrawal() {
+            return 10;
+        }
+    }
+
+    A. package, new, int
+    B. package, class, long
+    C. import, class, null
+    D. //, class, int
+    E. import, interface, void
+    F. package, class, void
+
+    Explanation :
+    B,D. Option A is incorrect because new cannot be used to declare a type. 
+    Option C is incorrect because null is a literal and cannot be used as the name of a class. 
+    Options E and F are incorrect because a void method cannot return a value. 
+    That leaves options B and D as the correct answers. 
+    Note that 10 can be returned as an int or implicitly promoted to a long, without issue.
+
+9. Which of the following are correct? (Choose two.)
+    public class Phone {
+        private int size;
+        // insert constructor here
+        public static void sendHome(Phone p, int newSize) {
+            p = new Phone(newSize);
+            p.size = 4;
+        }
+        public static final void main(String... params) {
+            final var phone = new Phone(3);
+            sendHome(phone,7);
+            System.out.print(phone.size);
+        }
+    }
+
+    A. The following is a valid constructor:
+        public static Phone create(int size) {
+            return new Phone(size);
+        }
+    B. The following is a valid constructor:
+        public static Phone newInstance(int size) {
+            return new Phone();
+        }
+    C. The following is a valid constructor:
+        public Phone(int size) {
+            this.size=size;
+        }
+    D. The following is a valid constructor:
+        public void Phone(int size) {
+            this.size=size;
+        }
+    E. With the correct constructor, the output is 3.
+    F. With the correct constructor, the output is 7.
+
+    Explanation :
+    C,E. Options A and B are static methods rather than constructors. Option D is a method that happens to have the same name as the class. 
+    It is not a constructor because constructors don’t have return types. Option C is a valid constructor.
+
+    As for the output, the key is that Java uses “pass by value” to send object references to methods. 
+    Since the Phone reference p was reassigned in the first line of the sendHome() method, any changes to the p reference were made to a new object. 
+    In other words, no changes in the sendHome() method affected the object that was passed in. 
+    Therefore, the value of size was the same before and after the method call, making the output 3 and option E the correct answer.
+
+10. Given the following class structures, which lines can be inserted into the blank independently
+    that would allow the class to compile? (Choose two.)
+        public class Dinosaur {
+        class Pterodactyl extends Dinosaur {}
+        public void roar() {
+            var dino = new Dinosaur();
+            _______________________;
+        }
+    }
+
+    A. dino.Pterodactyl()
+    B. Dinosaur.new Pterodactyl()
+    C. dino.new Pterodactyl()
+    D. new Dino().new Pterodactyl()
+    E. new Dinosaur().Pterodactyl()
+    F. new Dinosaur.Pterodactyl()
+
+    Explanation :
+    C,F. Options A and E are incorrect because the new keyword before Pterodactyl is required to create an instance of the member inner class Pterodactyl using a member of the outer class Dinosaur. 
+    Option B is incorrect, as this is not a valid way to instantiate a member inner class. 
+    Option C is correct and relies on the dino instance variable for the outer class instance. 
+    Option D would be correct if Dino was changed to the correct class name, Dinosaur. 
+    Finally, option F is correct and relies on the fact that roar() is an instance method, which means there’s an implicit instance of the outer class Dinosaur available. 
+    The Dinosaur. prefix is optional, though.
+
+11. What is the output of the Computer program?
+    class Laptop extends Computer {
+        public void startup() {
+            System.out.print("laptop-");
+        }
+    }
+    public class Computer {
+        public void startup() {
+            System.out.print("computer-");
+        }
+        public static void main(String[] args) {
+            Computer computer = new Laptop();
+            Laptop laptop = new Laptop();
+            computer.startup();
+            laptop.startup();
+        }
+    }
+
+    A. computer-laptop-
+    B. laptop-computer-
+    C. laptop-laptop-
+    D. The code does not compile.
+    E. None of the above.
+
+    Explanation :
+    C. Both objects are instances of the class Laptop. 
+    This means the overridden startup() method in the Laptop class gets called both times thanks to polymorphism, making option C correct.
+
+12. What access modifier is used to mark class members package-private?
+    A. default
+    B. friend
+    C. protected
+    D. private
+    E. None of the above
+
+    Explanation :
+    E. In Java, the lack of an access modifier indicates that the member is package-private; therefore, option E is correct. 
+    Note that the default keyword is used for interfaces, annotations, and switch statements, and is not an access modifier.
+
+13. How many lines does the following code output?
+    public class Cars {
+        private static void drive() {
+            static {
+                System.out.println("static");
+            }
+            System.out.println("fast");
+            { System.out.println("faster"); }
+        }
+        public static void main(String[] args) {
+            drive();
+            drive();
+        }
+    }
+
+    A. One.
+    B. Two.
+    C. Three.
+    D. Four.
+    E. None of the above. The code does not compile.
+
+    Explanation :
+    E. A static initializer is not allowed inside a method. It should go on the class level rather than the method level. 
+    Therefore, the code does not compile, and option E is correct.
+
+14. Which statements about static interface methods are correct? (Choose three.)
+    A. A static interface method can be final.
+    B. A static interface method can be declared private.
+    C. A static interface method can be package-private.
+    D. A static interface method can be declared public.
+    E. A static interface method can be declared protected.
+    F. A static interface method can be declared without an access modifier.
+
+    Explanation :
+    B,D,F. Option A is incorrect as methods cannot be marked final within an interface. 
+    Interfaces support static methods that are marked public or private, making options B and D correct and option E incorrect. 
+    Option F is correct and lack of access modifier makes the method implicitly public, not package-private, making option C incorrect.
+
+15. Fill in the blanks with the only option that makes this statement false: A(n) ______________
+    can access ______________ of the enclosing class in which it is defined.
+    A. static nested class, static members
+    B. static nested class, instance members
+    C. member inner class, static members
+    D. member inner class, instance members
+    E. local class, instance members from within an instance method
+    F. anonymous class, instance members from within an instance method
+
+    Explanation :
+    B. A static nested class cannot access instance members of the enclosing class, making option B correct. The rest of the options form true statements.
+
+16. What is the result of executing the following program?
+    public class Canine {
+        public String woof(int bark) {
+            return "1"+bark.toString();
+        }
+        public String woof(Integer bark) {
+            return "2"+bark.toString();
+        }
+        public String woof(Object bark) {
+            return "3"+bark.toString();
+        }
+        public static void main(String[] a) {
+            System.out.println(woof((short)5));
+        }
+    }
+
+    A. 15
+    B. 25
+    C. 35
+    D. One line does not compile.
+    E. Two lines do not compile.
+    F. The program compiles but throws an exception at runtime.
+
+    Explanation :
+    E. The first woof() method does not compile because bark is a primitive, not an object, and does not have a toString() method. 
+    The main() method also does not compile because it is static and all of the woof() methods require an instance of Canine. 
+    Since these two lines do not compile, option E is the correct answer. 
+    If the toString() was removed from the first method and all of the methods were marked static, then the program would print 15 at runtime.
+
+17. What statement best describes the notion of effectively final in Java?
+    A. A local variable that is marked final
+    B. A static variable that is marked final
+    C. A local variable whose primitive value or object reference does not change after it is initialized
+    D. A local variable whose primitive value or object reference does not change after a certain point in the method
+    E. None of the above
+
+    Explanation :
+    C. A local variable is effectively final when its primitive value or object reference does not change after it is initialized, making option C the correct answer. 
+    Note that option D is incorrect because any change to the variable after it is initialized disqualifies it for being considered effectively final.
+
+18. What is the output of the Turnip class?
+    package animal;
+    interface GameItem {
+        int sell();
+    }
+    abstract class Vegetable implements GameItem {
+        public final int sell() { return 5; }
+    }
+    public class Turnip extends Vegetable {
+        public final int sell() { return 3; }
+        public static void main(String[] expensive) {
+            System.out.print(new Turnip().sell());
+        }
+    }
+
+    A. 3
+    B. 5
+    C. The code does not compile.
+    D. The code compiles but throws an exception at runtime.
+    E. None of the above.
+
+    Explanation :
+    C. The sell() method is declared final in the Vegetable class. 
+    The Turnip class then attempts to override this method, resulting in a compilation error, making option C the correct answer.
+
+19. What is the output of the following application?
+    package holiday;
+    enum DaysOff {
+        Thanksgiving, PresidentsDay, ValentinesDay
+    }
+    public class Vacation {
+        public static void main(String... unused) {
+            final DaysOff input = DaysOff.Thanksgiving;
+            switch(input) {
+                default:
+                case DaysOff.ValentinesDay:
+                    System.out.print("1");
+                case DaysOff.PresidentsDay:
+                    System.out.print("2");
+            }
+        }
+    }
+
+    A. 1
+    B. 2
+    C. 12
+    D. The code does not compile.
+    E. The code compiles but throws an exception at runtime.
+    F. None of the above.
+
+    Explanation :
+    D. The case statements incorrectly use the enum name as well as the value, such as DaysOff.ValentinesDay. 
+    Since the type of the enum is determined by the value of the variable in the switch statement, the enum name is not allowed and causes a compilation error when used. 
+    For this reason, option D is correct. If the enum name DaysOff was removed, the application would output 12, 
+    since the lack of any break statements causes multiple blocks to be reached, and option C would have been the correct answer.
+
+20. Which statements about instance keywords are correct? (Choose two.)
+    A. The that keyword can be used to read public members in the direct parent class.
+    B. The this keyword can be used to read all members declared within the class.
+    C. The super keyword can be used to read all members declared in a parent class.
+    D. The that keyword can be used to read members of another class.
+    E. The this keyword can be used to read public members in the direct parent class.
+    F. The super keyword can be used in static methods.
+
+    Explanation :
+    B,E. There is no that keyword, so options A and D are incorrect. Option B is correct, as this can access all members declared within the class. 
+    Option C is incorrect, as only inherited members can be accessed. For example, private members declared in a parent class cannot be accessed using super. 
+    Option E is correct, as this allows access to members declared in the class and those inherited from a parent. 
+    Finally, option F is incorrect, as static methods do not have access to this or super references.
+
+21. Fill in the blanks: A class ____________ an interface and ______________ an abstract class.
+    An interface ______________ another interface.
+
+    A. extends, extends, implements
+    B. extends, implements, extends
+    C. extends, implements, implements
+    D. implements, extends, extends
+    E. implements, extends, implements
+    F. implements, implements, extends
+
+    Explanation :
+    D. A class can implement an interface, not extend it, ruling out options A, B, and C. Classes do extend an abstract class, ruling out option F. 
+    Finally, an interface can only extend another interface, making option D the correct answer.
+
+22. Suppose you have the following code. Which of the images best represents the state of the references
+    c1, c2, and c3, right before the end of the main() method, assuming garbage collection
+    hasn’t run? In the diagrams, each box represents a Chicken object with a number of eggs.
+    1: public class Chicken {
+    2:      private Integer eggs = 2;
+    3:      { this.eggs = 3; }
+    4:      public Chicken(int eggs) {
+    5:          this.eggs = eggs;
+    6:      }
+    7:      public static void main(String[] r) {
+    8:          var c1 = new Chicken(1);
+    9:          var c2 = new Chicken(2);
+    10:         var c3 = new Chicken(3);
+    11:         c1.eggs = c2.eggs;
+    12:         c2 = c1;
+    13:         c3.eggs = null;
+    14:     } }
+   
+    A. Option A.
+    B. Option B.
+    C. Option C.
+    D. Option D.
+    E. The code does not compile.
+    F. None of the above.
+
+    Explanation :
+    B. Three instances of Chicken are created on lines 8–10. On line 11, the value of eggs in the first two instances is set to 2, while the third instance has a value of 3. 
+    On line 12, the original instance that was pointed to by c1 (with an eggs value of 2) is dereferenced and eligible for garbage collection. 
+    The c1 and c2 variables now both point to the same instance with an egg value of 2. 
+    Finally, on line 13, the eggs value for c3 is changed from 3 to null.
+
