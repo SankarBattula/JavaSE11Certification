@@ -473,3 +473,571 @@
     The c1 and c2 variables now both point to the same instance with an egg value of 2. 
     Finally, on line 13, the eggs value for c3 is changed from 3 to null.
 
+23. What is the output of the following application?
+    package musical;
+    interface Speak { default int talk() { return 7; } }
+    interface Sing { default int talk() { return 5; } }
+    public class Performance implements Speak, Sing {
+        public int talk(String... x) {
+            return x.length;
+        }
+        public static void main(String[] notes) {
+            System.out.print(new Performance().talk());
+        }
+    }
+
+    A. 7
+    B. 5
+    C. The code does not compile.
+    D. The code compiles without issue, but the output cannot be determined until runtime.
+    E. None of the above.
+
+    Explanation :
+    C. Java does not allow multiple inheritance, so having one class implement two interfaces that both define the same default method signature leads to a compiler error, unless the class overrides the method. 
+    In this case, the talk(String...) method defined in the Performance class is an overloaded method, not an overridden one, because the signatures do not match. 
+    Therefore, the Performance class does not compile, making option C correct.
+
+24. What is the output of the following application?
+    package ai;
+    interface Pump {
+        void pump(double psi);
+    }
+    interface Bend extends Pump {
+        void bend(double tensileStrength);
+    }
+    public class Robot {
+        public static final void apply(
+            Bend instruction, double input) {
+            instruction.bend(input);
+        }
+        public static void main(String... future) {
+            final Robot r = new Robot();
+            r.apply(x -> System.out.print(x+" bent!"), 5);
+        }
+    }
+
+    A. 5 bent!
+    B. 5.0 bent!
+    C. The code does not compile because Bend is not a functional interface.
+    D. The code does not compile because of the apply() method declaration.
+    E. None of the above.
+
+    Explanation :
+    C. A functional interface must contain exactly one abstract method. The Bend interface contains two abstract methods, pump() and bend(), since it extends Pump and inherits pump(). 
+    For this reason, the Bend interface is not a valid functional interface and therefore cannot be used as a lambda expression, making option C the correct answer. 
+    The rest of the code compiles without issue. 
+    Note that the usage of an instance variable to call a static method, r.apply() in the main() method, is permitted but discouraged.
+
+25. Which statement is true about encapsulation while providing the broadest access allowed?
+    A. Variables are private, and methods are private.
+    B. Variables are private, and methods are public.
+    C. Variables are public, and methods are private.
+    D. Variables are public, and methods are public.
+    E. None of the above.
+
+    Explanation :
+    B. If the variables are public, the class is not encapsulated because callers have direct access to them. This rules out options C and D. 
+    Having private methods doesn’t allow the callers to use the data, making option A an undesirable answer. 
+    Option B is correct and the classic definition of encapsulation where the data is not exposed directly.
+
+26. Fill in the blanks: The ___________________ access modifier allows access to everything the
+    ___________________ access modifier does and more.
+
+    A. package-private, private
+    B. private, protected
+    C. protected, public
+    D. private, package-private
+    E. None of the above
+
+    Explanation :
+    A. Package-private allows access by code within the same package, while the private modifier allows access only to members in the same class. 
+    This makes option A the correct answer. 
+    Options B, C, and D are incorrect because the first term is a more restrictive access modifier than the second term.
+
+27. Which statement about the following interface is correct?
+    public interface Swimming {
+        String DEFAULT = "Diving!";         // k1
+        abstract int breath();
+        private static void stroke() {
+            if(breath()==1) {               // k2
+                System.out.print("Go!");
+            } else {
+                System.out.print(dive());   // k3
+            }
+        }
+        static String dive() {
+            return DEFAULT;                 // k4
+        }
+    }
+
+    A. The code compiles without issue.
+    B. The code does not compile because of line k1.
+    C. The code does not compile because of line k2.
+    D. The code does not compile because of line k3.
+    E. The code does not compile because of line k4.
+    F. None of the above.
+
+    Explanation :
+    C. The stroke() method is static, which means it cannot access the instance method breath() on line k2, making option C correct.
+
+28. Which is the first line to fail to compile?
+    class Tool {
+        private void repair() {}            // r1
+        void use() {}                       // r2
+    }
+    class Hammer extends Tool {
+        private int repair() { return 0; }  // r3
+        private void use() {}               // r4
+        public void bang() {}               // r5
+    }
+
+    A. r1
+    B. r2
+    C. r3
+    D. r4
+    E. r5
+    F. None of the above
+
+    Explanation :
+    D. The Hammer class is a subclass of the Tool class. The repair() method can be declared in the Hammer subclass with a different return type because the parent method is not inherited. 
+    For these reasons, options A and C are incorrect. On the other hand, the use() method is package-private in Tool, with the overridden version in Hammer reducing the visibility to private. 
+    This is an invalid override, making option D correct. The rest of the lines compile without issue.
+
+29. Which modifier can be applied to an abstract interface method?
+    A. final
+    B. interface
+    C. protected
+    D. void
+    E. None of the above
+
+    Explanation :
+    E. Methods cannot be both abstract and final, making option A incorrect. Abstract interface methods are always public, making option C incorrect. 
+    Finally, interface and void are not modifiers on a method, making options B and D incorrect. 
+    Therefore, option E is the answer.
+
+30. What is the output of the Plant program?
+    class Bush extends Plant {
+        String type = "bush";
+    }
+    public class Plant {
+        String type = "plant";
+        public static void main(String[] args) {
+            Plant w1 = new Bush();
+            Bush w2 = new Bush();
+            Plant w3 = w2;
+            System.out.print(w1.type+","+w2.type+","+w3.type);
+        }
+    }
+
+    A. plant,bush,plant
+    B. plant,bush,bush
+    C. bush,plant,bush
+    D. bush,bush,bush
+    E. The code does not compile.
+    F. None of the above.
+
+    Explanation :
+    A. While both objects are instances of Bush, we are not calling methods in this example. Virtual method invocation works only for methods, not instance variables. 
+    For instance variables, Java looks at the type of the reference and calls the appropriate variable based on the reference. 
+    Based on the reference types of the three variables (Plant, Bush, Plant), option A is correct.
+
+31. Which statements can accurately fill in the blanks in this table? (Choose two.)
+
+    Variable        |  Type Can Be Called Within the Class from What Type of Method?
+    Instance        |  Blank 1: _____________
+    static          |  Blank 2: _____________
+
+    A. Blank 1: an instance method only
+    B. Blank 1: a static method only
+    C. Blank 1: an instance or static method
+    D. Blank 2: an instance method only
+    E. Blank 2: a static method only
+    F. Blank 2: an instance or static method
+
+    Explanation :
+    A,F. An instance variable can be referenced only from instance methods in the class, making option A correct. 
+    A static variable can be referenced from any method. Therefore, option F is correct.
+
+32. What is the correct order of statements for a Java class file?
+    A. import statements, package statement, class declaration
+    B. package statement, class declaration, import statements
+    C. class declaration, import statements, package statement
+    D. package statement, import statements, class declaration
+    E. import statements, class declaration, package statement
+    F. class declaration, package statement, import statements
+
+    Explanation :
+    D. Java classes are defined in this order: package statement, import statements, class declaration. That makes option D the only correct answer. 
+    Note that not all of these statements are required. For example, a class may not have a package statement, but if it does, it must come first in the file.
+
+33. What is true of the following code? (Choose three.)
+    1: class Penguin {
+    2:      enum Baby { EGG }
+    3:      static class Chick {
+    4:          enum Baby { EGG }
+    5:      }
+    6:      public static void main(String[] args) {
+    7:          boolean match = false;
+    8:          Baby egg = Baby.EGG;
+    9:          switch (egg) {
+    10:             case EGG:
+    11:                 match = true;
+    12:         }
+    13:     }
+    14: }
+
+    A. It compiles as is.
+    B. It does not compile as is.
+    C. Removing line 2 would create an additional compiler error.
+    D. Removing line 2 would not create an additional compiler error.
+    E. Removing the static modifier on line 3 would create an additional compiler error.
+
+    Explanation :
+    A, C, E. The code does compile as is, making option A correct. Removing line 2 would cause a compiler error in the main() method since the enum inside Chick is not referenced. 
+    This makes option C the next answer. Finally, option E is the final answer because an enum cannot be defined in a non-static inner class. 
+    Only top-level types and static nested classes can define static members other than static constants, and enums are implicitly static.
+
+34. Which are true of the following? (Choose two.)
+    package beach;
+    public class Sand {
+        private static int numShovels;
+        private int numRakes;
+        public static int getNumShovels() {
+            return numShovels;
+        }
+        public static int getNumRakes() {
+            return numRakes;
+        }
+        public Sand() {
+            System.out.print("a");
+        }
+        public void Sand() {
+            System.out.print("b");
+        }
+        public void run() {
+            new Sand();
+            Sand();
+        }
+        public static void main(String... args) {
+            new Sand().run();
+        }
+    }
+
+    A. The code compiles.
+    B. One line doesn’t compile.
+    C. Two lines don’t compile.
+    D. If any constructors and/or methods that do not compile are removed, the remaining code prints a.
+    E. If the code compiles or if any constructors/methods that do not compile are removed, the remaining code prints ab.
+    F. If the code compiles or if any constructors/methods that do not compile are removed, the remaining code prints aab.
+
+    Explanation :
+    B,F. A static method can access static variables, but not instance variables. The getNumRakes() method does not compile, so option B is correct.
+    The main() method calls the constructor, which outputs a. Then the main method calls the run() method. The run() method calls the constructor again, which outputs a again. 
+    Then the run() method calls the Sand() method, which happens to have the same name as the constructor. This outputs b. Therefore, option F is correct.
+
+35. Which of the following class types cannot be marked final or abstract?
+    A. static nested class.
+    B. Local class.
+    C. Anonymous class.
+    D. Member inner class.
+    E. All of the above can be marked final or abstract.
+
+    Explanation :
+    C. While an anonymous class can extend another class or implement an interface, it cannot be declared final or abstract since it has no class definition. 
+    For this reason, option C is correct. The other classes may be declared final or abstract since they have a class definition.
+
+36. Fill in the blanks: The ___________________ access modifier allows access to everything the
+    ___________________ access modifier does and more. (Choose three.)
+
+    A. package-private, protected
+    B. package-private, public
+    C. protected, package-private
+    D. protected, public
+    E. public, package-private
+    F. public, protected
+
+    Explanation :
+    C,E,F. The public access modifier is the broadest, making options E and F correct. Package-private access limits references to those in the same package. 
+    The protected access modifier adds on subclass access, making option C correct.
+
+37. Which is the first line containing a compiler error?
+    var title = "Weather"; // line x1
+    var hot = 100, var cold = 20; // line x2
+    var f = 32, int c = 0; // line x3
+
+    A. x1
+    B. x2
+    C. x3
+    D. None of the above
+
+    Explanation :
+    B. Java does not allow multiple variables to be declared in the same statement using local variable type inference. Lines x2 and x3 both have compiler errors. 
+    Since the question asks about the first line with a compiler error, option B is the answer.
+
+38. How many of the following members of Telephone interface are public?
+    public interface Telephone {
+        static int call() { return 1; }
+        default void dial() {}
+        long answer();
+        String home = "555-555-5555";
+    }
+
+    A. Zero.
+    B. One.
+    C. Two.
+    D. Three.
+    E. Four.
+    F. The code does not compile.
+
+    Explanation :
+    E. All four members of the Telephone interface are implicitly public, making option E correct. 
+    Only private and private static interface methods are not public, and they must be explicitly marked private.
+
+39. Which best describes what the new keyword does?
+    A. Creates a copy of an existing object and treats it as a new one.
+    B. Creates a new primitive.
+    C. Instantiates a new object.
+    D. Switches an object reference to a new one.
+    E. The behavior depends on the class implementation.
+
+    Explanation :
+    C. The new keyword is used to call the constructor for a class and instantiate an instance of the class, making option C correct. 
+    A primitive cannot be created using the new keyword, so option B is incorrect. 
+    Dealing with references happens after the object created by new is returned. The other options are invalid.
+
+40. How many lines will not compile?
+    12: public void printVarargs(String... names) {
+    13:     System.out.println(Arrays.toString(names));
+    14: }
+    15: public void printArray(String[] names) {
+    16:     System.out.println(Arrays.toString(names));
+    17: }
+    18: public void stormy() {
+    19:     printVarargs("Arlene");
+    20:     printVarargs(new String[]{"Bret"});
+    21:     printVarargs(null);
+    22:     printArray ("Cindy");
+    23:     printArray (new String[]{"Don"});
+    24:     printArray (null);
+    25: }
+
+    A. Zero
+    B. One
+    C. Two
+    D. Three
+    E. Four
+    F. Five
+
+    Explanation :
+    B. From within a method, an array or varargs parameter is treated the same. However, there is a difference from the caller’s point of view. 
+    A varargs parameter can receive either an array or individual values, making line 19 and 20 compile. 
+    However, an array parameter can take only an array, which permits line 23 but prevents line 22 from compiling. 
+    Both lines 21 and 24 compile because null can be passed to a method taking an array or a varargs. 
+    Since there is only one line that doesn’t compile, option B is the answer.
+
+41. Which of the following can include a static method in its definition? (Choose three.)
+    A. Interface
+    B. Anonymous class
+    C. Abstract class
+    D. Member inner class
+    E. Local class
+    F. static nested class
+
+    Explanation :
+    A,C,F. Both abstract classes and interfaces can include static methods, so options A and C are correct. 
+    Of all the nested class types, only static nested classes can include static methods, making option F correct, and options B, D, and E incorrect.
+
+42. What is the minimum number of lines that need to be removed to make this code compile?
+    @FunctionalInterface
+    public interface Play {
+    public static void baseball() {}
+    private static void soccer() {}
+    default void play() {}
+    void fun();
+    }
+
+    A. 1.
+    B. 2.
+    C. 3.
+    D. 4.
+    E. The code compiles as is.
+
+    Explanation :
+    E. This code is already a functional interface and compiles without any changes. 
+    The Play interface has a single abstract method: fun(). The other methods have a method body, which shows they are not abstract.
+
+43. Fill in the blanks: A class that defines an instance variable with the same name as a variable
+    in the parent class is referred to as ___________________ a variable, while a class that defines
+    a static method with the same signature as a static method in a parent class is referred to as
+    ___________________ a method.
+
+    A. hiding, overriding
+    B. overriding, hiding
+    C. masking, masking
+    D. hiding, masking
+    E. replacing, overriding
+    F. hiding, hiding
+
+    Explanation :
+    F. Both of these descriptions refer to variable and static method hiding, respectively, making option F correct. 
+    Only instance methods can be overridden, making options A and B incorrect. 
+    Options C, D, and E are also incorrect because replacing and masking are not real terms in this context.
+
+44. What change is needed to make Secret well encapsulated?
+    import java.util.*;
+    public class Secret {
+        private int number = new Random().nextInt(10);
+        public boolean guess(int candidate) {
+            return number == candidate;
+        }
+    }
+
+    A. Change number to use a protected access modifier.
+    B. Change number to use a public access modifier.
+    C. Declare a private constructor.
+    D. Declare a public constructor.
+    E. Remove the guess method.
+    F. None. It is already well encapsulated.
+
+    Explanation :
+    F. This class is a good example of encapsulation. It has a private instance variable and is accessed by a public method. 
+    No changes are needed to encapsulate it, and option F is correct.
+
+45. Which of the following are the best reasons for creating a public static interface
+    method? (Choose two.)
+    A. Allow static methods to access instance methods.
+    B. Allow an interface to define a method at the class level.
+    C. Provide an implementation that a class implementing the interface can override.
+    D. Improve code reuse within the interface.
+    E. Add backward compatibility to existing interfaces.
+    F. Improve encapsulation of the interface.
+
+    Explanation :
+    B,D. Option A is incorrect because static methods cannot call instance methods directly. 
+    Options B and D are correct and are the primary reasons to create a static interface method. 
+    Options C and E are incorrect and describe attributes of a default method. 
+    Option F applies only to private static interface methods, not public ones.
+
+46. What is the output of the following application?
+    package space;
+    public class Bottle {
+        public static class Ship {
+            private enum Sail { // w1
+                TALL {protected int getHeight() {return 100;}},
+                SHORT {protected int getHeight() {return 2;}};
+                protected abstract int getHeight();
+            }
+            public Sail getSail() {
+                return Sail.TALL;
+            }
+            }
+        public static void main(String[] stars) {
+            var bottle = new Bottle();
+            Ship q = bottle.new Ship(); // w2
+            System.out.print(q.getSail());
+        }
+    }
+
+    A. TALL
+    B. The code does not compile because of line w1.
+    C. The code does not compile because of line w2.
+    D. The code does not compile for another reason.
+    E. The code compiles, but the application does not produce any output at runtime.
+    F. None of the above.
+
+    Explanation :
+    C. The Bottle class includes a static nested class Ship that must be instantiated in a static manner. 
+    Line w2 uses an instance of Bottle to instantiate the Ship. Therefore, line w2 does not compile, and option C is the correct answer. 
+    Note that if Ship were changed to be a member inner class, the code would still not compile since a member inner class cannot include static members and enums are inherently static.
+
+47. Which of the following is not a valid order for elements within a class?
+    A. Constructor, instance variables, method declarations
+    B. Instance variables, static initializer constructor, method declarations
+    C. Method declarations, instance variables, constructor
+    D. Instance initializer, constructor, instance variables, constructor
+    E. None of the above
+
+    Explanation :
+    E. The instance variables, constructor, instance and static initializers, and method declarations can appear in any order within a class declaration.
+
+48. Which line of code, inserted at line p1, causes the application to print 5?
+    package games;
+    public class Jump {
+        private int rope = 1;
+        protected boolean outside;
+        public Jump() {
+            // line p1
+            outside = true;
+        }
+        public Jump(int rope) {
+            this.rope = outside ? rope : rope+1;
+        }
+        public static void main(String[] bounce) {
+            System.out.print(new Jump().rope);
+        }
+    }
+
+    A. this(4);
+    B. new Jump(4);
+    C. this(5);
+    D. rope = 4;
+    E. super(4);
+    F. super(5);
+
+    Explanation :
+    A. First, all of the lines compile, but they produce various different results. 
+    Remember that the default initialization of a boolean instance variable is false, so outside is false at line p1. 
+    Therefore, this(4) will cause rope to be set to 5, while this(5) will cause rope to be set to 6. 
+    Since 5 is the number we are looking for, option A is correct, and option C is incorrect. Option B is incorrect. 
+    While the statement does create a new instance of Jump, with rope having a value of 5, that instance is nested, 
+    and the value of rope does not affect the surrounding instance of Jump that the constructor was called in. 
+    Option D is also incorrect. The value assigned to rope is 4, not the target 5. 
+    Options E and F do not compile because the superclass is Object, which does not have a constructor taking an int.
+
+49. Which of the following is not a reason to use encapsulation when designing a class?
+    (Choose two.)
+    A. Improve security.
+    B. Increase concurrency and improve performance.
+    C. Maintain class data integrity of data elements.
+    D. Prevent users from modifying the internal attributes of a class.
+    E. Prevent variable state from changing.
+    F. Promote usability by other developers.
+
+    Explanation :
+    B,E. Option A is true because encapsulation improves security because instance variables cannot be accessed directly. 
+    Implementing encapsulation prevents internal attributes of a class from being modified directly, so option D is a true statement. 
+    By preventing access to internal attributes, we can also maintain class data integrity between elements, making option C a true statement. 
+    Option F is also a true statement about encapsulation, since well-encapsulated classes are often easier to use. 
+    Option B is an incorrect statement. Encapsulation makes no guarantees about performance and concurrency. 
+    Option E is also an incorrect statement because it describes immutability.
+
+50. Which statement about the following program is correct? (Choose two.)
+    package ballroom;
+    class Leader {}
+    class Follower {}
+    abstract class Dancer {
+        public Leader getPartner() { return new Leader(); }
+        abstract public Leader getPartner(int count);       // u1
+    }
+    public abstract class SwingDancer extends Dancer {
+        public Leader getPartner(int x) { return null; }
+        public Follower getPartner() {                      // u2
+            return new Follower();                          // u3
+        }
+        public static void main(String[] args) {
+            new SwingDancer().getPartner();                 // u4
+        }
+    }
+
+    A. The code does not compile because of line u1.
+    B. The code does not compile because of line u2.
+    C. The code does not compile because of line u3.
+    D. The code does not compile because of line u4.
+    E. At least three of the classes compile without issue.
+    F. All of the classes compile without issue.
+
+    Explanation :
+    B,D. Line u2 does not compile because getPartner() is overridden with a return type that is not covariant, as Follower is not the same type nor a subtype of the Leader class. 
+    Line u4 also does not compile because SwingDancer is marked abstract and cannot be instantiated directly. 
+    For these reasons, options B and D are the correct answers. The rest of the code compiles without issue.
+
