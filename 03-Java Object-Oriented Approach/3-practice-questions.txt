@@ -459,7 +459,7 @@
     12:         c2 = c1;
     13:         c3.eggs = null;
     14:     } }
-   
+      
     A. Option A.
     B. Option B.
     C. Option C.
